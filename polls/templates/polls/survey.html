@@ -3,41 +3,108 @@
 	<title>Post-Voting Survey</title>
 </head>
 <body>
+	<h1>Post-Voting Survey</h1>
+
 	<form method="post">
 		{% csrf_token %}
-		<p>Gender</p>
+
+		<p>1. Age</p>		
+		<input type="number" name="age"><br />
+
+		<p>2. Gender</p>
 	    <input type="radio" name="sex" value="male">Male</input>
 	    <input type="radio" name="sex" value="female">Female</input><br />
+	    <br />
 
-		<p>Do you have normal or corrected to normal vision</p>
+		<p>3. Do you have normal or corrected to normal vision</p>
 	    <input type="radio" name="ncvision" value="no">No</input>
 	    <input type="radio" name="ncvision" value="yes">Yes</input><br />
 
 	    <p>If you answered no, please describe your Snellen visual acuity (ex. 20/200) and the degree of your visual field.</p>
+	    <p>Visual acuity:</p> <input type="text" name="acuity"><br />
+	    <p>Degree of visual field:</p> <input type="text" name="degree"><br />
+	    <br />
 
-	    <p>Do you consider yourself to have a reading disability?</p>
+	    <p>4. Do you consider yourself to have a reading disability?</p>
 	    <input type="radio" name="reading" value="no">No</input>
 	    <input type="radio" name="reading" value="yes">Yes</input><br />
+	    <br />
 
-	    <p>Do you have a hearing impairment?</p>
+	    <p>5. Do you have a hearing impairment?</p>
 	    <input type="radio" name="hearing" value="no">No</input>
 	    <input type="radio" name="hearing" value="yes">Yes</input><br />
+	    <br />
 
-	    <p>Are you a native English speaker?</p>
+	    <p>6. Are you a native English speaker?</p>
 	    <input type="radio" name="english" value="no">No</input>
 	    <input type="radio" name="english" value="yes">Yes</input><br />
 
 	    <p>If no, what is your native language?</p>
-
-	    <p>How many hours per week do you an iPad?</p>
-	    <input type="radio" name="hours" value="no">No</input><br />
-	    <input type="radio" name="hours" value="yes">Yes</input><br />
-	    <input type="radio" name="hours" value="no">No</input><br />
-	    <input type="radio" name="hours" value="no">No</input><br />
-	    <input type="radio" name="hours" value="no">No</input><br />
-	    <input type="radio" name="hours" value="no">No</input>
+	    <input type="text" name="native"><br />
 	    <br />
 
+	    <p>7. How many hours per week do you an iPad?</p>
+	    <input type="radio" name="hours" value="ipad1">less than 5 hours</input><br />
+	    <input type="radio" name="hours" value="ipad2">between 5 and 10 hours</input><br />
+	    <input type="radio" name="hours" value="ipad3">between 10 and 20 hours</input><br />
+	    <input type="radio" name="hours" value="ipad4">between 20 and 30 hours</input><br />
+	    <input type="radio" name="hours" value="ipad5">between 30 and 40 hours</input><br />
+	    <input type="radio" name="hours" value="ipad6">over 40 hours</input>
+	    <br />
+
+	    <p>8. Please rate your level of iPad expertise (1 = novice, 10 = expert)</p>
+	    <select name="expertise">
+	    	<option value="1">1</option>
+	    	<option value="2">2</option>
+	    	<option value="3">3</option>
+	    	<option value="4">4</option>
+	    	<option value="5">5</option>
+	    	<option value="6">6</option>
+	    	<option value="7">7</option>
+	    	<option value="8">8</option>
+	    	<option value="9">9</option>
+	    	<option value="10">10</option>
+	    </select>
+	    <br />
+
+	    <p>9. What is your political affiliation</p>
+	    <input type="radio" name="affiliation" value="republican">Republican</input><br />
+	    <input type="radio" name="affiliation" value="democrat">Democrat</input><br />
+	    <input type="radio" name="affiliation" value="libertarian">Libertarian</input><br />
+	    <input type="radio" name="affiliation" value="independent">Independent</input><br />
+	    <input type="radio" name="affiliation" value="other">Other, please specify: </input><input type="text" name="affiliation_other"><br />
+	    <br />
+
+	    <p>10. How many national elections have you voted in?</p>
+	    <input type="radio" name="num_elections" value="elections1">None</input><br />
+	    <input type="radio" name="num_elections" value="elections2">1 to 8</input><br />
+	    <input type="radio" name="num_elections" value="elections3">9 to 15</input><br />
+	    <input type="radio" name="num_elections" value="elections4">15 or more</input><br />
+	    <br />
+
+	    <p>11. In which state(s) and county(s) have you voted in a national election?</p>
+	    <input type="text" name="voting_locations">
+	    <br />
+
+	    <p>12. How many other elections of any type (local, school board, etc.) have you voted in?</p>
+	    <input type="number" name="other_elections">
+	    <br />
+
+	    <p>13. In which state(s) and county(s) have you voted in other types of elections?</p>
+	    <input type="text" name="other_voting_locations">
+	    <br />
+
+	    <br />
+	    <br />
+	    <b>***For questions 14 - 22, please answer keeping in mind your previous voting experience in any type of election (not including voting you did in this study). If you have never voted, please skip questions 14 - 22.***</b>
+	    <br />
+
+	    <p>14. Do you typically cast your vote on an absentee ballot?</p>
+	    <input type="radio" name="absentee" value="no">No</input>
+	    <input type="radio" name="absentee" value="yes">Yes</input><br />
+
+
+	    <br />
 		<input type="submit" value="Submit" />
 	</form>
 </body>
