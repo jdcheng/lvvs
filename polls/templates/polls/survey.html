@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Post-Voting Survey</title>
+</head>
+<body>
+	<form method="post">
+		{% csrf_token %}
+		<p>Gender</p>
+	    <input type="radio" name="sex" value="male">Male</input>
+	    <input type="radio" name="sex" value="female">Female</input><br />
+
+		<p>Do you have normal or corrected to normal vision</p>
+	    <input type="radio" name="ncvision" value="no">No</input>
+	    <input type="radio" name="ncvision" value="yes">Yes</input><br />
+
+	    <p>If you answered no, please describe your Snellen visual acuity (ex. 20/200) and the degree of your visual field.</p>
+
+	    <p>Do you consider yourself to have a reading disability?</p>
+	    <input type="radio" name="reading" value="no">No</input>
+	    <input type="radio" name="reading" value="yes">Yes</input><br />
+
+	    <p>Do you have a hearing impairment?</p>
+	    <input type="radio" name="hearing" value="no">No</input>
+	    <input type="radio" name="hearing" value="yes">Yes</input><br />
+
+	    <p>Are you a native English speaker?</p>
+	    <input type="radio" name="english" value="no">No</input>
+	    <input type="radio" name="english" value="yes">Yes</input><br />
+
+	    <p>If no, what is your native language?</p>
+
+	    <p>How many hours per week do you an iPad?</p>
+	    <input type="radio" name="hours" value="no">No</input><br />
+	    <input type="radio" name="hours" value="yes">Yes</input><br />
+	    <input type="radio" name="hours" value="no">No</input><br />
+	    <input type="radio" name="hours" value="no">No</input><br />
+	    <input type="radio" name="hours" value="no">No</input><br />
+	    <input type="radio" name="hours" value="no">No</input>
+	    <br />
+
+		<input type="submit" value="Submit" />
+	</form>
+</body>
+</html>
