@@ -26,6 +26,7 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
+
 def survey(request):
     return render(request, 'polls/survey.html')
 
@@ -46,6 +47,9 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
+
+def options(request):
+    return render(request, 'polls/options.html')
 
 def submit_survey(request):
     filename = 'survey' + '_' + time.strftime("%d_%m_%Y") + '_' + time.strftime("%H%M%S") + '.csv'

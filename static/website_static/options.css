@@ -1,0 +1,27 @@
+#controls  {  float:right;
+              padding:2px;
+              width:25px;
+              background:#333;
+              
+              margin:0 0 0 440px;
+              text-align:center;
+              transition:.25s ease-out;}
+
+#controls a
+           {  font-size:24px;
+              color:#aaa;
+              display:block;
+              font-weight:bold;
+              padding: 5px;}
+
+#controls a:hover
+           {  color:#fff;
+              background:#000;
+              transition:.25s ease-out;}
+
+a.selected  {  background:#000;
+               color:#fff !important;}
+
+#small     {  font-size:10px !important;}
+#medium    {  font-size:14px !important;}
+#large     {  font-size:18px  !important;}

@@ -1,6 +1,8 @@
 <html>
 <head>
-  <link href="{{ STATIC_URL }}website_static/detail.css" rel="stylesheet" type="text/css" title="main" media="screen" />
+	<title>Ballot Accessibility Options</title>
+</head>
+  <link href="{{ STATIC_URL }}website_static/options.css" rel="stylesheet" type="text/css" title="main" media="screen" />
 
   <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
   <script>
@@ -27,8 +29,7 @@
   
     $("#large").click(function(event){
       event.preventDefault();
-      $("h1").animate({"font-size":"48px", 
-        "font-color":"green"});
+      $("h1")animate({"font-size":"48px"});
       $("label").animate({"font-size":"30px"});
       $("input").animate({"font-size":"30px"});
       $("#vote").animate({
@@ -44,25 +45,22 @@
 
   });
   </script>
-</head>
 <body>
-  <div id="controls">
+
+	<h1>Ballot Accessibility Options</h1>
+	<p>Sample Ballot Question</p>
+		<p> Justice of the Peace, Precinct 2, Place 2</p>
+	      <input type="radio" /> George E. Risner - <i>Democratic Party</i></input>
+	<h2> Adjust Ballot Font Size</h2>
+	  <div id="controls">
     <a href="#" id="small" class="selected">A</a>
     <a href="#" id="medium">A</a>
     <a href="#" id="large">A</a>
   </div>
 
-  <h1>{{ question.question_text }}</h1>
+	<h2> Invert Color</h2>
 
-  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-  <form action="{% url 'polls:vote' question.id %}" method="post">
-  {% csrf_token %}
-  {% for choice in question.choice_set.all %}
-      <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-      <label for="choice{{ forloop.counter }}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</i> </label><br />
-  {% endfor %}
-  <input type="submit" id="vote" value="Vote" />
-  </form>
 </body>
 </html>
+ 
+ 
