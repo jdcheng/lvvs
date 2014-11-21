@@ -48,6 +48,14 @@ def vote(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
 
+def forward(request, question_id):
+    p = get_object_or_404(Question, pk=question_id)
+    return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
+
+def back(request, question_id):
+    p = get_object_or_404(Question, pk=question_id)
+    return HttpResponseRedirect(reverse('polls:detail', args=(p.id-1,)))
+
 def options(request):
     return render(request, 'polls/options.html')
 

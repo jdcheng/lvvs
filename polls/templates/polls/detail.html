@@ -64,5 +64,13 @@
   {% endfor %}
   <input type="submit" id="vote" value="Vote" />
   </form>
+  <form action="{% url 'polls:back' question.id %}" method="post">
+    {% csrf_token %}
+  <input type="submit" id="vote" value="Previous Race" />
+  </form>
+  <form action="{% url 'polls:forward' question.id %}" method="post">
+    {% csrf_token %}
+  <input type="submit" id="forward" value="Next Race" />
+  </form>
 </body>
 </html>
