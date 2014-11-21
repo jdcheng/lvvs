@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     url(r'^(?P<pk>\d+)/results/$', views.ResultsView.as_view(), name='results'),
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
     url(r'^survey/$', views.survey, name='survey'),
+    url(r'^survey/submit/$', views.submit_survey, name='submit_survey'),
 )

@@ -5,7 +5,7 @@
 <body>
 	<h1>Post-Voting Survey</h1>
 
-	<form method="post">
+	<form action="{% url 'polls:submit_survey' %}" method="post">
 		{% csrf_token %}
 
 		<p>1. Age</p>		
