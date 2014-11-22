@@ -18,6 +18,16 @@
       sessionStorage.setItem('background-color', 'white');
     }
 
+    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
+      $("input[value="+sessionStorage.getItem('remember_choice_for_{{ question.id }}')+"]").prop("checked", true);
+    };
+
+    $("#vote").click(function(event){
+      if ($("input[name='choice']:checked").val()) {
+        sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
+      }
+    });
+
     $("#small").click(function(event){
       event.preventDefault();
       $("h1").animate({"font-size":"18px"});
@@ -78,7 +88,7 @@
   </form>
   <form action="{% url 'polls:back' question.id %}" method="post">
     {% csrf_token %}
-  <input type="submit" id="vote" value="Previous Race" />
+  <input type="submit" id="previous" value="Previous Race" />
   </form>
   <form action="{% url 'polls:forward' question.id %}" method="post">
     {% csrf_token %}
