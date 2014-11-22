@@ -127,17 +127,18 @@ def get_new_survey(request):
 def survey(request):
     return render(request, 'polls/survey.html')
 
+all_questions = {}
 def vote(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = p.choice_set.get(pk=request.POST['choice'])
+        all_questions[question_id] = request.POST['choice']
+        request.session['all_questions'] = all_questions
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
         return render(request, 'polls/detail.html', {
             'question': p,
             'error_message': "You didn't select a choice.",
-            "titleSize": 40,
-            "choiceSize": 30,
         })
     else:
         selected_choice.votes += 1
