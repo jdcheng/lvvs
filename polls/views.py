@@ -113,11 +113,12 @@ def get_new_survey(request):
         filename = 'survey' + '_' + time.strftime("%d_%m_%Y") + '_' + time.strftime("%H%M%S") + '.csv'
         if form.is_valid():
             with open(filename, 'wb') as csvfile:
-                spamwriter = csv.writer(csvfile, delimiter=',')
-                for field in form.fields.values():
-                    label = field.label
-                    choice = field.value
-                    spamwriter.writerow([label]+[choice])
+                votewriter = csv.writer(csvfile, delimiter=',')
+                for data in form.fields.iteritems():
+                    tag = data[0]
+                    label = data[1].label
+                    choice = form.cleaned_data[tag]
+                    votewriter.writerow([label]+[choice])
             return HttpResponseRedirect(reverse('polls:options'))
     else:
         form = NewSurvey()
