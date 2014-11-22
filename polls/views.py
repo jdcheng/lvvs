@@ -119,7 +119,7 @@ def get_new_survey(request):
                     label = data[1].label
                     choice = form.cleaned_data[tag]
                     votewriter.writerow([label]+[choice])
-            return HttpResponseRedirect(reverse('polls:options'))
+            return render(request, 'polls/thanks.html')
     else:
         form = NewSurvey()
     return render(request, 'newsurvey.html', {'form': form})
