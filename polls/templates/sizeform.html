@@ -1,5 +1,5 @@
 <html>
-<form action="{% url 'polls:submit_survey' %}" method="post">
+<form action="{% url 'polls:get_title_size' %}" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit" />
