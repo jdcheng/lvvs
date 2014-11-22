@@ -23,10 +23,6 @@ class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
-class SizeForm(forms.Form):
-    title_size = forms.CharField(label='Size of title', max_length = 100)
-    choice_size = forms.CharField(label='Size of choices', max_length = 100)
-
 class NewSurvey(forms.Form):
     GENDERS=[('Male', 'Male'), ('Female', 'Female')]
     YES= [('Yes', 'Yes'), ('No', 'No')]
@@ -155,17 +151,6 @@ def forward(request, question_id):
 def back(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id-1,)))
-
-def get_title_size(request):
-    if request.method == 'POST':
-        form = SizeForm(request.POST)
-        if form.is_valid():
-            title_size = form.cleaned_data['title_size']
-            choice_size = form.cleaned_data['choice_size']
-            return render(request, 'polls/options.html')
-    else:
-        form = SizeForm()
-    return render(request, 'sizeform.html', {'form': form})
 
 def toballot(request):
     return render(request, 'polls/survey.html')
