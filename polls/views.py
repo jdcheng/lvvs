@@ -55,23 +55,23 @@ class NewSurvey(forms.Form):
     ('$40,000 to $60,000','$40,000 to $60,000'),
     ('$60,000 to $80,000','$60,000 to $80,000'),
     ('Above $80,000','Above $80,000')]
-    age = forms.CharField(label='1. Age', max_length = 100)
-    gender = forms.ChoiceField(label="2. Gender", choices=GENDERS, widget=forms.RadioSelect())
-    vision = forms.ChoiceField(label="3. Do you have normal or corrected to normal vision? ", choices=YES, widget=forms.RadioSelect())
+    age = forms.CharField(required = False, label='1. Age', max_length = 100)
+    gender = forms.ChoiceField(required = False, label="2. Gender", choices=GENDERS, widget=forms.RadioSelect())
+    vision = forms.ChoiceField(required = False, label="3. Do you have normal or corrected to normal vision? ", choices=YES, widget=forms.RadioSelect())
     acuity = forms.CharField(required=False, label=mark_safe('If you answered no, please describe your Snellen visual acuity (ex. 20/200) and the degree of your visual field.<br /><br /> Visual acuity:'), max_length = 100)
     field = forms.CharField(required=False, label='Degree of visual field', max_length = 100)
-    reading = forms.ChoiceField(label="4. Do you consider yourself to have a reading disability?", choices=YES, widget=forms.RadioSelect())
-    hearing = forms.ChoiceField(label="5. Do you have a hearing impairment?", choices=YES, widget=forms.RadioSelect())
-    english = forms.ChoiceField(label="6. Are you a native English speaker?", choices=YES, widget=forms.RadioSelect())
+    reading = forms.ChoiceField(required = False, label="4. Do you consider yourself to have a reading disability?", choices=YES, widget=forms.RadioSelect())
+    hearing = forms.ChoiceField(required = False, label="5. Do you have a hearing impairment?", choices=YES, widget=forms.RadioSelect())
+    english = forms.ChoiceField(required = False, label="6. Are you a native English speaker?", choices=YES, widget=forms.RadioSelect())
     language = forms.CharField(required=False, label='If no, what is your native language?', max_length = 100)
     ipaduse = forms.ChoiceField(required = False, label="7. How many hours per week do you use an iPad?", choices=IPAD, widget=forms.RadioSelect())
-    ipadexpertise = forms.ChoiceField(label="8. Please rate your level of iPad expertise (1 = novice, 10 = expert)", choices=[(x, x) for x in range(1, 11)])
-    political = forms.ChoiceField(label="9. What is your political affiliation", choices=POLITICAL, widget=forms.RadioSelect())
+    ipadexpertise = forms.ChoiceField(required = False, label="8. Please rate your level of iPad expertise (1 = novice, 10 = expert)", choices=[(x, x) for x in range(1, 11)])
+    political = forms.ChoiceField(required = False, label="9. What is your political affiliation", choices=POLITICAL, widget=forms.RadioSelect())
     political_other = forms.CharField(required = False, label = "Other Political Affiliation", max_length = 100)
-    ipaduse = forms.ChoiceField(label="10. How many national elections have you voted in?", choices=ELECTIONS, widget=forms.RadioSelect())
-    locationsnational = forms.CharField(label='11. In which state(s) and county(s) have you voted in a national election?', max_length = 100)
-    othertypes = forms.CharField(label='12. How many other elections of any type (local, school board, etc.) have you voted in?', max_length = 100)
-    locationsother = forms.CharField(label='13. In which state(s) and county(s) have you voted in other types of elections?', max_length = 100)
+    ipaduse = forms.ChoiceField(required = False, label="10. How many national elections have you voted in?", choices=ELECTIONS, widget=forms.RadioSelect())
+    locationsnational = forms.CharField(required = False, label='11. In which state(s) and county(s) have you voted in a national election?', max_length = 100)
+    othertypes = forms.CharField(required = False, label='12. How many other elections of any type (local, school board, etc.) have you voted in?', max_length = 100)
+    locationsother = forms.CharField(required = False, label='13. In which state(s) and county(s) have you voted in other types of elections?', max_length = 100)
     absentee = forms.ChoiceField(required= False, label=mark_safe("<b>***For questions 14 - 22, please answer keeping in mind your previous voting experience in any type of election (not including voting you did in this study). If you have never voted, please skip questions 14 - 22.*** </b><br /><br />14. Do you typically cast your vote on an absentee ballot?"), choices=YES, widget=forms.RadioSelect())
     bubble = forms.CharField(required=False, label=mark_safe('15. Please indicate how many times you have used each type of technology or ballot to cast your vote in any election.<br /> <br /> Fill in the bubble (or box)'), max_length = 100)
     arrows = forms.CharField(required = False, label = "Connect the arrows (or lines)", max_length = 100)
@@ -114,8 +114,10 @@ def get_new_survey(request):
         if form.is_valid():
             with open(filename, 'wb') as csvfile:
                 spamwriter = csv.writer(csvfile, delimiter=',')
-                for value in form.cleaned_data.iteritems():
-                    spamwriter.writerow([value])
+                for field in form.fields.values():
+                    label = field.label
+                    choice = field.value
+                    spamwriter.writerow([label]+[choice])
             return HttpResponseRedirect(reverse('polls:options'))
     else:
         form = NewSurvey()
