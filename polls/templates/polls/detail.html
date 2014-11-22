@@ -6,6 +6,18 @@
   <script>
   $(document).ready(function(){
 
+    if (sessionStorage.getItem('color') != 'null') {
+      $("body").css('color', sessionStorage.getItem('color'));
+    } else {
+      sessionStorage.setItem('color', 'black');
+    }
+
+    if (sessionStorage.getItem('background-color-color') != 'null') {
+      $("body").css('background-color', sessionStorage.getItem('background-color'));
+    } else {
+      sessionStorage.setItem('background-color', 'white');
+    }
+
     $("#small").click(function(event){
       event.preventDefault();
       $("h1").animate({"font-size":"18px"});

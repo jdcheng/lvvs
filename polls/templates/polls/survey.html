@@ -1,5 +1,25 @@
 <html>
 <head>
+
+  <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+  <script>
+  $(document).ready(function(){
+
+    if (sessionStorage.getItem('color') != 'null') {
+      $("body").css('color', sessionStorage.getItem('color'));
+    } else {
+      sessionStorage.setItem('color', 'black');
+    }
+
+    if (sessionStorage.getItem('background-color-color') != 'null') {
+      $("body").css('background-color', sessionStorage.getItem('background-color'));
+    } else {
+      sessionStorage.setItem('background-color', 'white');
+    }
+
+  });
+  </script>
+
 	<title>Post-Voting Survey</title>
 </head>
 <body>
