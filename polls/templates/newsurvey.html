@@ -1,7 +1,8 @@
 <html>
+<h1>Post-Voting Survey</h1>
 <form action="{% url 'polls:new_survey' %}" method="post">
     {% csrf_token %}
-     {{ form }}
+     {{ form.as_p }}
     <input type="submit" value="Submit" />
     <head>
 	<title>Post-Voting Survey</title>

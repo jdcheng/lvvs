@@ -27,11 +27,35 @@ class SizeForm(forms.Form):
     choice_size = forms.CharField(label='Size of choices', max_length = 100)
 
 class NewSurvey(forms.Form):
-    age = forms.CharField(label='1. Age', max_length = 100)
     GENDERS=[('Male', 'Male'), ('Female', 'Female')]
     YES= [('Yes', 'Yes'), ('No', 'No')]
+    IPAD= [('less than 5 hours','less than 5 hours'),
+     ('between 5 and 10 hours','between 5 and 10 hours'),
+      ('between 10 and 20 hours','between 10 and 20 hours'),
+       ('between 20 and 30 hours','between 20 and 30 hours'),
+        ('between 30 and 40 hours','between 30 and 40 hours'),
+         ('over 40 hours','over 40 hours')]
+    POLITICAL= [('Republican','Republican'),
+     ('Democrat','Democrat'),
+      ('Libertarian','Libertarian'),
+       ('Independent','Independent'),
+        ('Other, please specify:','Other, please specify:')]
+    ELECTIONS = [('None','None'),
+     ('1 to 8','1 to 8'),
+      ('9 to 15','9 to 15'),
+       ('15 or more','15 or more')]
+    age = forms.CharField(label='1. Age', max_length = 100)
     gender = forms.ChoiceField(label="2. Gender", choices=GENDERS, widget=forms.RadioSelect())
-    vision = forms.ChoiceField(label="3. Do you have normal or corrected to normal vision?", choices=YES, widget=forms.RadioSelect())
+    vision = forms.ChoiceField(label="3. Do you have normal or corrected to normal vision? finish 3!!", choices=YES, widget=forms.RadioSelect())
+    reading = forms.ChoiceField(label="4. Do you consider yourself to have a reading disability?", choices=YES, widget=forms.RadioSelect())
+    hearing = forms.ChoiceField(label="5. Do you have a hearing impairment?", choices=YES, widget=forms.RadioSelect())
+    english = forms.ChoiceField(label="6. Are you a native English speaker?", choices=YES, widget=forms.RadioSelect())
+    language = forms.CharField(required=False, label='If no, what is your native language?', max_length = 100)
+    ipaduse = forms.ChoiceField(label="7. How many hours per week do you use an iPad?", choices=IPAD, widget=forms.RadioSelect())
+    ipadexpertise = forms.ChoiceField(label="8. Please rate your level of iPad expertise (1 = novice, 10 = expert)", choices=[(x, x) for x in range(1, 11)])
+    political = forms.ChoiceField(label="9. What is your political affiliation", choices=POLITICAL, widget=forms.RadioSelect())
+    political_other = forms.CharField(required = False, label = "Other Political Affiliation", max_length = 100)
+    ipaduse = forms.ChoiceField(label="10. How many national elections have you voted in?", choices=ELECTIONS, widget=forms.RadioSelect())
 
 class ResultsView(generic.DetailView):
     model = Question
