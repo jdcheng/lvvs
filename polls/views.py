@@ -26,9 +26,27 @@ class SizeForm(forms.Form):
     title_size = forms.CharField(label='Size of title', max_length = 100)
     choice_size = forms.CharField(label='Size of choices', max_length = 100)
 
+class NewSurvey(forms.Form):
+    age = forms.CharField(label='1. Age', max_length = 100)
+    GENDERS=[('Male', 'Male'), ('Female', 'Female')]
+    YES= [('Yes', 'Yes'), ('No', 'No')]
+    gender = forms.ChoiceField(label="2. Gender", choices=GENDERS, widget=forms.RadioSelect())
+    vision = forms.ChoiceField(label="3. Do you have normal or corrected to normal vision?", choices=YES, widget=forms.RadioSelect())
+
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
+
+def get_new_survey(request):
+    if request.method == 'POST':
+        form = NewSurvey(request.POST)
+        if form.is_valid():
+            age = form.cleaned_data['age']
+            gender = form.cleaned_data['gender']
+            return HttpResponseRedirect(reverse('polls:options'))
+    else:
+        form = NewSurvey()
+    return render(request, 'newsurvey.html', {'form': form})
 
 def survey(request):
     return render(request, 'polls/survey.html')
