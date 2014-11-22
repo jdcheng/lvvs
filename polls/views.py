@@ -153,7 +153,6 @@ def forward(request, question_id):
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
 
 def back(request, question_id):
-    print all_questions
     p = get_object_or_404(Question, pk=question_id)
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id-1,)))
 
