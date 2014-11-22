@@ -118,7 +118,7 @@ def get_new_survey(request):
         if form.is_valid():
             with open(filename, 'wb') as csvfile:
                 spamwriter = csv.writer(csvfile, delimiter=',')
-                for value in form.cleaned_data.values():
+                for value in form.cleaned_data.iteritems():
                     spamwriter.writerow([value])
             return HttpResponseRedirect(reverse('polls:options'))
     else:
