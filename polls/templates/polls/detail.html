@@ -52,7 +52,7 @@
     <a href="#" id="large">A</a>
   </div>
 
-  <h1>{{ question.question_text }}</h1>
+  <h1><font size = "{{titleSize}}">{{ question.question_text }}</font></h1>
 
   {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -60,7 +60,7 @@
   {% csrf_token %}
   {% for choice in question.choice_set.all %}
       <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-      <label for="choice{{ forloop.counter }}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</i> </label><br />
+      <label for="choice{{ forloop.counter }}"><font size = "{{choiceSize}}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> </label><br />
   {% endfor %}
   <input type="submit" id="vote" value="Vote" />
   </form>
@@ -71,6 +71,10 @@
   <form action="{% url 'polls:forward' question.id %}" method="post">
     {% csrf_token %}
   <input type="submit" id="forward" value="Next Race" />
+  </form>
+    <form action="{% url 'polls:options' question.id %}" method="post">
+    {% csrf_token %}
+  <input type="submit" id="options" value="Accessibility Options" />
   </form>
 </body>
 </html>

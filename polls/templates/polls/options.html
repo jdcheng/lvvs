@@ -52,6 +52,14 @@
 		<p> Justice of the Peace, Precinct 2, Place 2</p>
 	      <input type="radio" /> George E. Risner - <i>Democratic Party</i></input>
 	<h2> Adjust Ballot Font Size</h2>
+		<form action="{% url 'polls:submit_survey' %}" method="post">
+		{% csrf_token %}
+		 <p>1. Title Size</p>		
+		<input type="number" name="title"><br />
+		<p>2. Choice Size</p>		
+		<input type="number" name="choice"><br />
+		<input type="submit" value="Submit" />
+		</form>
 	  <div id="controls">
     <a href="#" id="small" class="selected">A</a>
     <a href="#" id="medium">A</a>
@@ -59,6 +67,12 @@
   </div>
 
 	<h2> Invert Color</h2>
+
+	<form action="{% url 'polls:toballot'%}" method="post">
+    {% csrf_token %}
+  <input type="submit" id="ballot" value="Back To Ballot" />
+  </form>
+
 
 </body>
 </html>

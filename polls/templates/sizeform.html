@@ -1,0 +1,7 @@
+<html>
+<form action="{% url 'polls:submit_survey' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+</html>

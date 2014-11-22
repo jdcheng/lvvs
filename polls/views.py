@@ -1,5 +1,6 @@
 import csv
 import time
+from django import forms
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
@@ -21,11 +22,13 @@ class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
+class SizeForm(forms.Form):
+    title_size = forms.CharField(label='Size of title', max_length = 100)
+    choice_size = forms.CharField(label='Size of choices', max_length = 100)
 
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
-
 
 def survey(request):
     return render(request, 'polls/survey.html')
@@ -39,6 +42,8 @@ def vote(request, question_id):
         return render(request, 'polls/detail.html', {
             'question': p,
             'error_message': "You didn't select a choice.",
+            "titleSize": 40,
+            "choiceSize": 30,
         })
     else:
         selected_choice.votes += 1
@@ -56,8 +61,28 @@ def back(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id-1,)))
 
-def options(request):
+def get_title_size(request):
+    if request.method == 'POST':
+        form = SizeForm(request.POST)
+        if form.is_valid():
+            title_size = form.cleaned_data['title_size']
+            choice_size = form.cleaned_data['choice_size']
+            return render(request, 'polls/options.html')
+    else:
+        form = SizeForm()
+    return render(request, 'sizeform.html', {'form': form})
+
+def toballot(request):
+    return render(request, 'polls/survey.html')
+
+def options(request, question_id):
     return render(request, 'polls/options.html')
+
+def options_base(request):
+    return render(request, 'polls/options.html')
+
+def submit_options(request):
+    return render(request, 'polls/thanks.html')
 
 def submit_survey(request):
     filename = 'survey' + '_' + time.strftime("%d_%m_%Y") + '_' + time.strftime("%H%M%S") + '.csv'
