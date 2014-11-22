@@ -54,7 +54,11 @@ class NewSurvey(forms.Form):
     ('Asian American','Asian American'),
     ('Caucasian','Caucasian'),
     ('Mexican American or Chicano','Mexican American or Chicano')]
-    INCOME= []
+    INCOME= [('below $20,000','below $20,000'),
+    ('$20,000 to $40,000','$20,000 to $40,000'),
+    ('$40,000 to $60,000','$40,000 to $60,000'),
+    ('$60,000 to $80,000','$60,000 to $80,000'),
+    ('Above $80,000','Above $80,000')]
     age = forms.CharField(label='1. Age', max_length = 100)
     gender = forms.ChoiceField(label="2. Gender", choices=GENDERS, widget=forms.RadioSelect())
     vision = forms.ChoiceField(label="3. Do you have normal or corrected to normal vision? ", choices=YES, widget=forms.RadioSelect())
@@ -91,6 +95,12 @@ class NewSurvey(forms.Form):
     describe = forms.CharField(required = False, label=mark_safe("If yes, please describe the situation: <br /><br />"), max_length = 1000, widget=forms.Textarea(attrs= {'cols' : 90, 'rows' : 10}))
     satisfied_overall = forms.ChoiceField(required = False, label="22. On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your past voting experiences overall?", choices=[(x, x) for x in range(1, 11)])
     occupation = forms.CharField(required=False, label='23. What is your current occupation?', max_length = 100)
+    education = forms.ChoiceField(required=False, label="24. Please indicate the highest level of education you have completed.", choices=EDUCATION, widget=forms.RadioSelect())
+    race = forms.ChoiceField(required=False, label="25. Are you:", choices=RACE, widget=forms.RadioSelect())
+    hispanic = forms.CharField(required=False, label='Other Hispanic or Latino (please specify)', max_length = 100)
+    multiracial = forms.CharField(required=False, label='Multiracial (please specify)', max_length = 100)
+    other_race = forms.CharField(required=False, label='Other', max_length = 100)
+    income = forms.ChoiceField(required=False, label="26. Which of the following income ranges best describes your yearly wages?", choices=INCOME, widget=forms.RadioSelect())
     satisfied_system = forms.ChoiceField(required = False, label="28. On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your experience using our voting system?", choices=[(x, x) for x in range(1, 11)])
     which_features_used = forms.CharField(required = False, label=mark_safe("29. Which accessibility features did you use? <br /><br />"), max_length = 1000, widget=forms.Textarea(attrs= {'cols' : 90, 'rows' : 10}))
     which_features_helpful = forms.CharField(required = False, label=mark_safe("30. Which accessibility features did you find most helpful? <br /><br />"), max_length = 1000, widget=forms.Textarea(attrs= {'cols' : 90, 'rows' : 10}))
