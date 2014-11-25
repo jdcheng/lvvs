@@ -168,6 +168,10 @@ def options_base(request):
 def submit_options(request):
     return render(request, 'polls/thanks.html')
 
+def slider(request):
+    return render(request, 'polls/slider.html')
+
+
 def submit_survey(request):
     filename = 'survey' + '_' + time.strftime("%d_%m_%Y") + '_' + time.strftime("%H%M%S") + '.csv'
     with open(filename, 'wb') as csvfile:

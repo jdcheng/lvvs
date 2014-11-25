@@ -8,8 +8,10 @@
   <script>
   $(document).ready(function(){
 
+if (sessionStorage.getItem('color') === null){
     sessionStorage.setItem('color', 'black');
     sessionStorage.setItem('background-color', 'white');
+  }
 
     $("#small").click(function(event){
       event.preventDefault();
