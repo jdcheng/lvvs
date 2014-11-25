@@ -1,23 +1,37 @@
 <!doctype html>
 <html lang="en">
-<head>
+ <head>
 	<meta charset="utf-8">
 	<title>jQuery UI Slider - Default functionality</title>
 	<h1> Text Boldness </h1>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	<link rel="stylesheet" href="/resources/demos/style.css">
+	<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
 	<script>
 	$(function() {
-		$( "#slider" ).slider();
+		$( "#slider" ).slider({
+		min: 0,
+		max: 100,
+		slide: function(event, ui) {
+			getBoldness();
+		}	
+		});
+
+		getBoldness();
 	});
+
+	function getBoldness() {
+		$boldness = $("#slider").slider("values", 0);
+		$("#boldness").val($boldness);
+	}
 	</script>
 </head>
 <body>
 
 <div id="slider"></div>
-
+<input id="boldness" type="submit" />
+<input type="submit" value="Apply Changes" />
 
 </body>
 </html>
