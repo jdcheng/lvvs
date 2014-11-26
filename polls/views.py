@@ -136,6 +136,7 @@ def survey(request):
 
 all_questions = {}
 def vote(request, question_id):
+    print question_id
     p = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = p.choice_set.get(pk=request.POST['choice'])
@@ -150,6 +151,10 @@ def vote(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
+
+        # TODO: remove this hardcoded number
+        if p.id == 162: # go to review page when done with voting
+            return render(request, 'polls/review.html')
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
