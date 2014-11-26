@@ -10,23 +10,36 @@
     {% for question in question_list %}
     <script>
     $(document).ready(function(){
-    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null){
-    	choice = "No selection for this race";
-    }
-    else{
-    	choice_dict_val = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
-    	choice = 
-    }
-    $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}" + " - " + choice);
+    //if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null){
+    //	choice = "No selection for this race";
+    //}
+    //else{
+    //	choice = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
+    //}
+    //alert(choice)
+    $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
 
-    if (choice == "No selection for this race"){
-    	$("p[id= question_text_{{ question.id }}]").css('fontWeight', 700);
+    //if (choice == "No selection for this race"){
+    //	$("p[id= question_text_{{ question.id }}]").css('fontWeight', 700);
+    //}
+
+    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null){
+        $("div[id = placeholder{{ question.id }}]").attr("id", sessionStorage.getItem("remember_choice_for_{{ question.id }}"));
     }
+    //alert("check")
 
 	});
     </script>
     </head>
     <p id = "question_text_{{ question.id }}">{{ question.question_text }} </p>
+    <div id = "placeholder{{ question.id }}"></div>
+      {% for choice in question.choice_set.all %}
+      {% if div.id == %}
+      {% if choice.value == div.id %}
+      <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+      <label for="choice{{ forloop.counter }}"><font size = "{{choiceSize}}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> </label><br />
+      {% endif %}
+  {% endfor %}
      <form action="{% url 'polls:detail' question.id %}" method="post">
     {% csrf_token %}
   <input type="submit" id="change" value="Change Selection" />
