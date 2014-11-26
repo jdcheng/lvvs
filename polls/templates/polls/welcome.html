@@ -1,8 +1,8 @@
 <html>
 <head>
-  <title>Ballot Accessibility Options</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	<title>Comp435: Election Systems Project</title>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <!--<link href="{{ STATIC_URL }}website_static/options.css" rel="stylesheet" type="text/css" title="main" media="screen" /> -->
@@ -109,6 +109,8 @@ if (sessionStorage.getItem("boldness") != null) {
 </head>
 <body>
 
+	<p>Thank you for participating in our research study. In the following steps you will be voting in a fictitious election. Please take the time to adjust the following accessibility options as you see fit.</p>
+
   <h1>Ballot Accessibility Options</h1>
   <p> <txt name= "sample">Sample Ballot Question</txt></p>
     <p> <txt name= "sample">Justice of the Peace, Precinct 2, Place 2</txt></p>
@@ -129,12 +131,10 @@ if (sessionStorage.getItem("boldness") != null) {
   <h2> Invert Color</h2>
   <button id="invert" type="button">Invert Color</button>
 
-  <form id = "ballot" action="{% url 'polls:toballot' %}" method="post">
-    {% csrf_token %}
-   <input type="submit" id="ballot" value="Back To Ballot" />
-  </form>
-
-
+<br />
+<br />
+<form id = "start" action="136" method="get">
+    <input type="submit" id="start_button" value="Begin" style="height:120px; width:120px; font-size:32px"/>
+</form>
 </body>
 </html>
- 

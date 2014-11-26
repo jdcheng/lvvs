@@ -10,14 +10,16 @@
     {% for question in question_list %}
     <script>
     $(document).ready(function(){
-    //if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null){
-    //	choice = "No selection for this race";
-    //}
-    //else{
-    //	choice = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
-    //}
-    //alert(choice)
     $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
+
+    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null){
+    	choice = "No selection for this race";
+    }
+    else{
+    	choice = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
+    }
+    $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}" + " - " + choice);
+
 
     //if (choice == "No selection for this race"){
     //	$("p[id= question_text_{{ question.id }}]").css('fontWeight', 700);

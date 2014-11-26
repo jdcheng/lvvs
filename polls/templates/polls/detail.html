@@ -38,51 +38,10 @@
       }
     });
 
-    $("#small").click(function(event){
-      event.preventDefault();
-      $("h1").animate({"font-size":"18px"});
-
-      $("label").animate({"font-size":"16px"});
-      $("input").animate({"font-size":"16px"});
-    });
-  
-    $("#medium").click(function(event){
-      event.preventDefault();
-      $("h1").animate({"font-size":"36px"});
-      $("label").animate({"font-size":"24px"});
-      $("input").animate({"font-size":"24px"});
-      $("#vote").animate({
-        "width":"75px",
-    	"font-size":"24px"}
-      );
-    });
-  
-    $("#large").click(function(event){
-      event.preventDefault();
-      $("h1").animate({"font-size":"48px", 
-        "font-color":"green"});
-      $("label").animate({"font-size":"30px"});
-      $("input").animate({"font-size":"30px"});
-      $("#vote").animate({
-        "width":"150px",
-    	"font-size":"30px"}
-      );
-    });
-  
-    $("a").click(function() {
-    $("a").removeClass("selected");
-    $(this).addClass("selected");
-    });
-
   });
   </script>
 </head>
 <body>
-  <div id="controls">
-    <a href="#" id="small" class="selected">A</a>
-    <a href="#" id="medium">A</a>
-    <a href="#" id="large">A</a>
-  </div>
 
   <h1><font size = "{{titleSize}}">{{ question.question_text }}</font></h1>
 
