@@ -1,5 +1,140 @@
-Welcome!
+<html>
+<head>
+	<title>Comp435: Election Systems Project</title>
 
-<form id = "start" action="136" method="get">
-    <input type="submit" id="start_button" value="Begin" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <!--<link href="{{ STATIC_URL }}website_static/options.css" rel="stylesheet" type="text/css" title="main" media="screen" /> -->
+
+  <!-- <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script> -->
+  <script>
+  $(document).ready(function(){
+
+var pathArray = window.location.pathname.split( '/' );
+var id = pathArray[2];
+if (id == "options"){
+  id = 0;
+}
+else{
+  id = parseInt(id);
+}
+
+sessionStorage.setItem('returnId', id)
+
+if (sessionStorage.getItem('color') == null){
+    sessionStorage.setItem('color', 'black');
+    sessionStorage.setItem('background-color', 'white');
+  }
+
+if (sessionStorage.getItem("boldness") != null) {
+  if (sessionStorage.getItem("boldness") == 400){
+      $("input[id=normal]").prop("checked", true);
+  }
+  else{
+    $("input[id=bold]").prop("checked", true);
+    $("txt[name=sample]").css("font-weight", 700);
+  }
+    }
+
+  if (sessionStorage.getItem("size") != null) {
+    $("txt[name=sample]").css("font-size", sessionStorage.getItem("size"));
+    $sizeValue = sessionStorage.getItem("size");
+  }
+  else{
+    $sizeValue = "18";
+  }
+
+  $("#size").val($sizeValue);
+
+  $( "#sizeSlider" ).slider({
+    min: 18,
+    max: 72,
+    value: $sizeValue,
+    slide: function(event, ui) {
+      getSize();
+    } 
+    });
+
+    $("#applySize").click(function(event) {
+      event.preventDefault();
+      sessionStorage.setItem('size', $size);
+      $("txt[name=sample]").animate({"font-size":$size + "px"});
+    });
+
+    $("#applyBold").click(function(event){
+      if ($("input[id='normal']:checked").val()) {
+        sessionStorage.setItem("boldness", 400)
+        $("txt[name=sample]").animate({"font-weight":400});
+      }
+      if ($("input[id='bold']:checked").val()) {
+        sessionStorage.setItem("boldness", 700)
+        $("txt[name=sample]").animate({"font-weight":700})
+      }
+
+    });
+
+
+    // function to invert color
+    $("#invert").click(function(event) {
+      event.preventDefault();
+      if (sessionStorage.getItem('color') == 'white') {
+        $("body").css('color', 'black');
+        sessionStorage.setItem('color', 'black');
+      } else {
+        $("body").css('color', 'white');
+        sessionStorage.setItem('color', 'white');
+      }
+      if (sessionStorage.getItem('background-color') == 'white') {
+        $("body").css('background-color', 'black');
+        sessionStorage.setItem('background-color', 'black');
+      } else {
+        $("body").css('background-color', 'white');
+        sessionStorage.setItem('background-color', 'white');
+      }
+    });
+
+  });
+
+  function getSize() {
+    $size = $("#sizeSlider").slider("values", 0);
+    $("#size").val($size);
+    //$("txt[name=sample]").animate({"font-size":$size + "px"});
+    //sessionStorage.setItem('size', $size);
+    //$("h1").animate({"font-size":$size + "px"});
+    //$("label").animate({"font-size":$size + "px"})
+  }
+
+  </script>
+</head>
+<body>
+
+	<p>Thank you for participating in our research study. In the following steps you will be voting in a fictitious election. Please take the time to adjust the following accessibility options as you see fit.</p>
+
+  <h1>Ballot Accessibility Options</h1>
+  <p> <txt name= "sample">Sample Ballot Question</txt></p>
+    <p> <txt name= "sample">Justice of the Peace, Precinct 2, Place 2</txt></p>
+        <input type="radio" /> <txt name= "sample">George E. Risner - <i>Democratic Party</i></txt></input>
+  <h2> Text Size </h2>
+<div id="sizeSlider"></div>
+<input id="size" type="button"/>
+<input id = "applySize" type="submit" value="Apply Changes" />
+<form>
+<h2> Text Boldness </h2>
+<form>
+<p><input name = "boldSelect" id = "normal" type="radio" > Normal </input></p>
+<p><input name = "boldSelect" id = "bold" type="radio" > <b> Bold </b> </input></p>
 </form>
+<input id = "applyBold" type="submit" value="Apply Changes" />
+
+
+  <h2> Invert Color</h2>
+  <button id="invert" type="button">Invert Color</button>
+
+<br />
+<br />
+<form id = "start" action="136" method="get">
+    <input type="submit" id="start_button" value="Begin" style="height:120px; width:120px; font-size:32px"/>
+</form>
+</body>
+</html>
