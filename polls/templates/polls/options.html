@@ -11,7 +11,18 @@
   <script>
   $(document).ready(function(){
 
-if (sessionStorage.getItem('color') === null){
+var pathArray = window.location.pathname.split( '/' );
+var id = pathArray[2];
+if (id == "options"){
+  id = 0;
+}
+else{
+  id = parseInt(id);
+}
+
+sessionStorage.setItem('returnId', id)
+
+if (sessionStorage.getItem('color') == null){
     sessionStorage.setItem('color', 'black');
     sessionStorage.setItem('background-color', 'white');
   }
@@ -80,7 +91,6 @@ if (sessionStorage.getItem("boldness") != null) {
     $("#applySize").click(function(event) {
       event.preventDefault();
       sessionStorage.setItem('size', $size);
-      $("txt[name=sample]").animate({"font-size":$size + "px"});
     });
   
     $("a").click(function() {
@@ -125,6 +135,7 @@ if (sessionStorage.getItem("boldness") != null) {
   function getSize() {
     $size = $("#sizeSlider").slider("values", 0);
     $("#size").val($size);
+    $("txt[name=sample]").animate({"font-size":$size + "px"});
     //sessionStorage.setItem('size', $size);
     //$("h1").animate({"font-size":$size + "px"});
     //$("label").animate({"font-size":$size + "px"})
@@ -154,10 +165,10 @@ if (sessionStorage.getItem("boldness") != null) {
   <h2> Invert Color</h2>
   <button id="invert" type="button">Invert Color</button>
 
-  <!-- <form action="{% url 'polls:toballot'%}" method="post">
+  <form id = "ballot" action="{% url 'polls:forward' 8 %}" method="post">
     {% csrf_token %}
    <input type="submit" id="ballot" value="Back To Ballot" />
-  </form> -->
+  </form>
 
 
 </body>

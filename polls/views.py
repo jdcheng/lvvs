@@ -156,8 +156,9 @@ def back(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id-1,)))
 
-def toballot(request):
-    return render(request, 'polls/newsurvey.html')
+def toballot(request, question_id):
+    p = get_object_or_404(Question, pk=question_id)
+    return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
 
 def options(request, question_id):
     return render(request, 'polls/options.html')
