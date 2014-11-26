@@ -16,6 +16,15 @@ if (sessionStorage.getItem('color') === null){
     sessionStorage.setItem('background-color', 'white');
   }
 
+if (sessionStorage.getItem("boldness") != null) {
+  if (sessionStorage.getItem("boldness") == 400){
+      $("input[id=normal]").prop("checked", true);
+  }
+  else{
+    $("input[id=bold]").prop("checked", true);
+  }
+    }
+
 
 
   $( "#sizeSlider" ).slider({
