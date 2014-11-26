@@ -91,6 +91,7 @@ if (sessionStorage.getItem("boldness") != null) {
     $("#applySize").click(function(event) {
       event.preventDefault();
       sessionStorage.setItem('size', $size);
+      $("txt[name=sample]").animate({"font-size":$size + "px"});
     });
   
     $("a").click(function() {
