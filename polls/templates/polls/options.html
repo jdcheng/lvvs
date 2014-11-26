@@ -166,7 +166,7 @@ if (sessionStorage.getItem("boldness") != null) {
   <h2> Invert Color</h2>
   <button id="invert" type="button">Invert Color</button>
 
-  <form id = "ballot" action="{% url 'polls:forward' 8 %}" method="post">
+  <form id = "ballot" action="{% url 'polls:toballot' %}" method="post">
     {% csrf_token %}
    <input type="submit" id="ballot" value="Back To Ballot" />
   </form>

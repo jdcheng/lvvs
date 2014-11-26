@@ -5,7 +5,7 @@ from polls import views
 urlpatterns = patterns('',
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
-    url(r'^(?P<question_id>\d+)/forward/$', views.toballot, name='toballot'),
+    url(r'^thanks/$', views.toballot, name='toballot'),
     url(r'^(?P<pk>\d+)/results/$', views.ResultsView.as_view(), name='results'),
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
     url(r'^(?P<question_id>\d+)/forward/$', views.forward, name='forward'),
@@ -18,5 +18,5 @@ urlpatterns = patterns('',
     url(r'^options/submit/$', views.submit_options, name='submit_options'),
     url(r'^(?P<question_id>\d+)/options/$', views.options, name='options'),
     url(r'^newsurvey/$', views.get_new_survey, name='new_survey'),
-
+    url(r'^welcome/$', views.welcome, name='welcome'),
 )

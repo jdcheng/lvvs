@@ -110,7 +110,6 @@ class NewSurvey(forms.Form):
     which_features_helpful = forms.CharField(required = False, label=mark_safe("30. Which accessibility features did you find most helpful? <br /><br />"), max_length = 1000, widget=forms.Textarea(attrs= {'cols' : 90, 'rows' : 10}))
     improvements = forms.CharField(required = False, label=mark_safe("31. What improvements would you suggest for this voting system? <br /><br />"), max_length = 1000, widget=forms.Textarea(attrs= {'cols' : 90, 'rows' : 10}))
 
-
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
@@ -164,11 +163,19 @@ def back(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id-1,)))
 
-def toballot(request, question_id):
-    p = get_object_or_404(Question, pk=question_id)
-    return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
+def toballot(request):
+    #p = get_object_or_404(Question, pk=question_id)
+    print request.session['current_question_id']
+    if request.session['current_question_id'] is not None:
+        return HttpResponseRedirect(reverse('polls:detail', args=(request.session['current_question_id'],)))
+    else:
+        return HttpResponseRedirect('polls/welcome.html')
+
+def welcome(request):
+    return render(request, 'polls/welcome.html')
 
 def options(request, question_id):
+    request.session['current_question_id'] = question_id
     return render(request, 'polls/options.html')
 
 def options_base(request):
