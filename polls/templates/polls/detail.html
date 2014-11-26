@@ -14,6 +14,12 @@
       $("body").css('background-color', sessionStorage.getItem('background-color'));
     }
 
+
+    alert("" + sessionStorage.getItem('size') + "")
+    $("body").css('fontSize', sessionStorage.getItem('size') + "px")
+
+      //$("body").css('text-weight', sessionStorage.getItem('boldness')) 
+
     if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
       $("input[value="+sessionStorage.getItem('remember_choice_for_{{ question.id }}')+"]").prop("checked", true);
     };
