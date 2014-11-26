@@ -2,8 +2,6 @@
 <html lang="en">
  <head>
 	<meta charset="utf-8">
-	<title>jQuery UI Slider - Default functionality</title>
-	<h1> Text Size </h1>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
@@ -12,7 +10,7 @@
 	$(document).ready(function(){
 
 
-		$( "#slider" ).slider({
+		$( "#sizeSlider" ).slider({
 		min: 18,
 		max: 72,
 		slide: function(event, ui) {
@@ -20,17 +18,26 @@
 		}	
 		});
 
-		getBoldness();
+		$( "#boldSlider" ).slider({
+		min: 18,
+		max: 72,
+		slide: function(event, ui) {
+			getBoldness();
+		}	
+		});
+
 	});
 
 	function getSize() {
-		$size = $("#slider").slider("values", 0);
+		$size = $("#sizeSlider").slider("values", 0);
 		$("#size").val($size);
 		sessionStorage.setItem('size', $size);
-		//$boldness2 = localStorage.getItem('boldness');
-		//if ($boldness2 != null){
-		//	alert("Yes")
-		//}
+	}
+
+	function getBoldness() {
+		$boldness = $("#boldSlider").slider("values", 0);
+		$("#boldness").val($boldness);
+		sessionStorage.setItem('boldness', $boldness);
 	}
 
 	//$("#apply").click(function(event){
@@ -41,8 +48,14 @@
 </head>
 <body>
 
-<div id="slider"></div>
+<h1> Text Size </h1>
+<div id="sizeSlider"></div>
 <input id="size" type="submit" />
+<input id = "apply" type="submit" value="Apply Changes" />
+
+<h1> Boldness </h1>
+<div id="boldSlider"></div>
+<input id="boldness" type="submit" />
 <input id = "apply" type="submit" value="Apply Changes" />
 
 </body>
