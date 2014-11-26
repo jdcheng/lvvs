@@ -157,7 +157,7 @@ def back(request, question_id):
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id-1,)))
 
 def toballot(request):
-    return render(request, 'polls/survey.html')
+    return render(request, 'polls/newsurvey.html')
 
 def options(request, question_id):
     return render(request, 'polls/options.html')

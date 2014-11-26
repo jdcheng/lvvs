@@ -1,0 +1,248 @@
+<html>
+<head>
+
+  <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+  <script>
+  $(document).ready(function(){
+
+    if (sessionStorage.getItem('color') != 'null') {
+      $("body").css('color', sessionStorage.getItem('color'));
+    }
+
+    if (sessionStorage.getItem('background-color-color') != 'null') {
+      $("body").css('background-color', sessionStorage.getItem('background-color'));
+    }
+
+  });
+  </script>
+
+	<title>Post-Voting Survey</title>
+</head>
+<body>
+	<h1>Post-Voting Survey</h1>
+
+	<form action="{% url 'polls:submit_survey' %}" method="post">
+		{% csrf_token %}
+
+		<p>1. Age</p>		
+		<input type="number" name="age"><br />
+
+		<p>2. Gender</p>
+	    <input type="radio" name="sex" value="male">Male</input>
+	    <input type="radio" name="sex" value="female">Female</input><br />
+	    <br />
+
+		<p>3. Do you have normal or corrected to normal vision</p>
+	    <input type="radio" name="ncvision" value="no">No</input>
+	    <input type="radio" name="ncvision" value="yes">Yes</input><br />
+
+	    <p>If you answered no, please describe your Snellen visual acuity (ex. 20/200) and the degree of your visual field.</p>
+	    <p>Visual acuity:</p> <input type="text" name="acuity"><br />
+	    <p>Degree of visual field:</p> <input type="text" name="degree"><br />
+	    <br />
+
+	    <p>4. Do you consider yourself to have a reading disability?</p>
+	    <input type="radio" name="reading" value="no">No</input>
+	    <input type="radio" name="reading" value="yes">Yes</input><br />
+	    <br />
+
+	    <p>5. Do you have a hearing impairment?</p>
+	    <input type="radio" name="hearing" value="no">No</input>
+	    <input type="radio" name="hearing" value="yes">Yes</input><br />
+	    <br />
+
+	    <p>6. Are you a native English speaker?</p>
+	    <input type="radio" name="english" value="no">No</input>
+	    <input type="radio" name="english" value="yes">Yes</input><br />
+
+	    <p>If no, what is your native language?</p>
+	    <input type="text" name="native"><br />
+	    <br />
+
+	    <p>7. How many hours per week do you use an iPad?</p>
+	    <input type="radio" name="hours" value="ipad1">less than 5 hours</input><br />
+	    <input type="radio" name="hours" value="ipad2">between 5 and 10 hours</input><br />
+	    <input type="radio" name="hours" value="ipad3">between 10 and 20 hours</input><br />
+	    <input type="radio" name="hours" value="ipad4">between 20 and 30 hours</input><br />
+	    <input type="radio" name="hours" value="ipad5">between 30 and 40 hours</input><br />
+	    <input type="radio" name="hours" value="ipad6">over 40 hours</input>
+	    <br />
+
+	    <p>8. Please rate your level of iPad expertise (1 = novice, 10 = expert)</p>
+	    <select name="expertise">
+	    	<option value="1">1</option>
+	    	<option value="2">2</option>
+	    	<option value="3">3</option>
+	    	<option value="4">4</option>
+	    	<option value="5">5</option>
+	    	<option value="6">6</option>
+	    	<option value="7">7</option>
+	    	<option value="8">8</option>
+	    	<option value="9">9</option>
+	    	<option value="10">10</option>
+	    </select>
+	    <br />
+
+	    <p>9. What is your political affiliation</p>
+	    <input type="radio" name="affiliation" value="republican">Republican</input><br />
+	    <input type="radio" name="affiliation" value="democrat">Democrat</input><br />
+	    <input type="radio" name="affiliation" value="libertarian">Libertarian</input><br />
+	    <input type="radio" name="affiliation" value="independent">Independent</input><br />
+	    <input type="radio" name="affiliation" value="other">Other, please specify: </input><input type="text" name="affiliation_other"><br />
+	    <br />
+
+	    <p>10. How many national elections have you voted in?</p>
+	    <input type="radio" name="num_elections" value="elections1">None</input><br />
+	    <input type="radio" name="num_elections" value="elections2">1 to 8</input><br />
+	    <input type="radio" name="num_elections" value="elections3">9 to 15</input><br />
+	    <input type="radio" name="num_elections" value="elections4">15 or more</input><br />
+	    <br />
+
+	    <p>11. In which state(s) and county(s) have you voted in a national election?</p>
+	    <input type="text" name="voting_locations">
+	    <br />
+
+	    <p>12. How many other elections of any type (local, school board, etc.) have you voted in?</p>
+	    <input type="number" name="other_elections">
+	    <br />
+
+	    <p>13. In which state(s) and county(s) have you voted in other types of elections?</p>
+	    <input type="text" name="other_voting_locations">
+	    <br />
+
+	    <br />
+	    <br />
+	    <b>***For questions 14 - 22, please answer keeping in mind your previous voting experience in any type of election (not including voting you did in this study). If you have never voted, please skip questions 14 - 22.***</b>
+	    <br />
+
+	    <p>14. Do you typically cast your vote on an absentee ballot?</p>
+	    <input type="radio" name="absentee" value="no">No</input>
+	    <input type="radio" name="absentee" value="yes">Yes</input><br />
+
+	    <p>15. Please indicate how many times you have used each type of technology or ballot to cast your vote in any election.</p>
+	    <p>Fill in the bubble (or box)</p><input type="number" name="method1">
+	    <p>Connect the arrows (or lines)</p><input type="number" name="method2">
+	    <p>Open response</p><input type="number" name="method3">
+	    <p>Lever machines</p><input type="number" name="method4">
+	    <p>Punchcards</p><input type="number" name="method5">
+	    <p>Electronic - touchscreen</p><input type="number" name="method6">
+	    <p>Electronic - other</p><input type="number" name="method7">
+	    <p>Don't know</p><input type="number" name="method8">
+	    <p>Other, please specify: </p> <input type="text" name="other_method">
+	    <br />
+
+	    <p>16. Have you ever felt worried about figuring out how to use the ballot or technology to cast your vote?</p>
+	    <input type="radio" name="worried" value="no">No</input>
+	    <input type="radio" name="worriedpressure" value="yes">Yes</input><br />
+
+	    <p>17. Have you ever felt that time pressure caused you to rush, make a mistake, or leave a choice blank when you would not otherwise have done so?</p>
+	    <input type="radio" name="pressure" value="no">No</input>
+	    <input type="radio" name="pressure" value="yes">Yes</input><br />
+
+	    <p>18. If you have felt time pressure, did this prevent you from voting?</p>
+	    <input type="radio" name="prevent" value="no">No</input>
+	    <input type="radio" name="prevent" value="yes">Yes</input><br />
+
+	    <p>19. Do you typically vote a straight-party ticket?</p>
+	    <input type="radio" name="straight" value="no">No</input>
+	    <input type="radio" name="straight" value="yes">Yes</input><br />
+
+	    <p>20. Do you typically cast a vote for every office on the ballot?</p>
+	    <input type="radio" name="every_office" value="no">No</input>
+	    <input type="radio" name="every_office" value="yes">Yes</input><br />
+
+	    <p>21. When you voted in an election, have you ever been unsure if your vote was cast correctly or would be counted? </p>
+	    <input type="radio" name="unsure" value="no">No</input>
+	    <input type="radio" name="unsure" value="yes">Yes</input><br />
+	    <p>If yes, please describe the situation.</p>
+	    <textarea cols="100" rows="5"></textarea>
+	    <br />
+
+	    <p>22. On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your past voting experiences overall?</p>
+	    <select name="satisfaction1">
+	    	<option value="1">1</option>
+	    	<option value="2">2</option>
+	    	<option value="3">3</option>
+	    	<option value="4">4</option>
+	    	<option value="5">5</option>
+	    	<option value="6">6</option>
+	    	<option value="7">7</option>
+	    	<option value="8">8</option>
+	    	<option value="9">9</option>
+	    	<option value="10">10</option>
+	    </select>
+	    <br />
+
+	    <p>23. What is your current occupation?</p>
+	    <input type="text" name="occupation">
+	    <br />
+
+	    <p>24. Please indicate the highest level of education you have completed.</p>
+	    <input type="radio" name="education" value="school1">Some high school</input><br />
+	    <input type="radio" name="education" value="school2">High school or G.E.D.</input><br />
+	    <input type="radio" name="education" value="school3">Some college or Associate's degree</input><br />
+	    <input type="radio" name="education" value="school4">Bachelor's degree or equivalent</input><br />
+	    <input type="radio" name="education" value="school5">Postgraduate degree (such as M.A., Ph.D., M.D., J.D.)</input>
+	    <br />
+
+	    <p>25. Are you:</p>
+	    <input type="radio" name="ethnicity" value="ethnicity1">African American</input><br />
+	    <input type="radio" name="ethnicity" value="ethnicity2">American Indian</input><br />
+	    <input type="radio" name="ethnicity" value="ethnicity3">Asian American</input><br />
+	    <input type="radio" name="ethnicity" value="ethnicity4">Caucasian</input><br />
+	    <input type="radio" name="ethnicity" value="ethnicity5">Mexican American or Chicano</input><br />
+	    <input type="radio" name="ethnicity" value="ethnicity6">Other Hispanic or Latino (please specify)</input><input type="text" name="hispanic_or_latino"><br />
+	    <input type="radio" name="ethnicity" value="ethnicity7">Multiracial (please specify)</input><input type="text" name="multiracial"><br />
+	    <input type="radio" name="ethnicity" value="ethnicity8">Other</input><input type="text" name="other_ethnicity">
+	    <br />
+
+	    <p>26. Which of the following income ranges best describes your yearly wages?</p>
+	    <input type="radio" name="income" value="income1">below $20,000</input><br />
+	    <input type="radio" name="income" value="income2">$20,000 to $40,000</input><br />
+	    <input type="radio" name="income" value="income3">$40,000 to $60,000</input><br />
+	    <input type="radio" name="income" value="income4">$60,000 to $80,000</input><br />
+	    <input type="radio" name="income" value="income5">Above $80,000</input><br />
+	    <br />
+
+	    <p>27. If you are retired, which of the following income ranges best describes your maximum yearly wages while you were working full-time?</p>
+	    <input type="radio" name="retired" value="retired1">below $20,000</input><br />
+	    <input type="radio" name="retired" value="retired2">$20,000 to $40,000</input><br />
+	    <input type="radio" name="retired" value="retired3">$40,000 to $60,000</input><br />
+	    <input type="radio" name="retired" value="retired4">$60,000 to $80,000</input><br />
+	    <input type="radio" name="retired" value="retired5">Above $80,000</input><br />
+	    <br />
+
+	    <p>28. On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your experience using our voting system?</p>
+	    <select name="satisfaction2">
+	    	<option value="1">1</option>
+	    	<option value="2">2</option>
+	    	<option value="3">3</option>
+	    	<option value="4">4</option>
+	    	<option value="5">5</option>
+	    	<option value="6">6</option>
+	    	<option value="7">7</option>
+	    	<option value="8">8</option>
+	    	<option value="9">9</option>
+	    	<option value="10">10</option>
+	    </select>
+	    <br />
+	    <br />
+
+	    <p>29. Which accessibility features did you use?</p>
+	    <textarea cols="100" rows="5"></textarea>
+	    <br />
+
+	    <p>30. Which accessibility features did you find most helpful?</p>
+	    <textarea cols="100" rows="5"></textarea>
+	    <br />
+
+	    <p>31. What improvements would you suggest for this voting system?</p>
+	    <textarea cols="100" rows="5"></textarea>
+	    <br />
+
+
+	    <br />
+		<input type="submit" value="Submit" />
+	</form>
+</body>
+</html>

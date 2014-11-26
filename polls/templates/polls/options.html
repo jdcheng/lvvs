@@ -16,6 +16,8 @@ if (sessionStorage.getItem('color') === null){
     sessionStorage.setItem('background-color', 'white');
   }
 
+
+
   $( "#sizeSlider" ).slider({
     min: 18,
     max: 72,
@@ -53,6 +55,13 @@ if (sessionStorage.getItem('color') === null){
       "font-size":"30px"}
       );
     });
+
+    $("#applySize").click(function(event) {
+      event.preventDefault();
+      sessionStorage.setItem('size', $size);
+      $("txt[id=sample]").animate({"font-size":$size + "px"});
+      $("label").animate({"font-size":$size + "px"})
+    });
   
     $("a").click(function() {
     $("a").removeClass("selected");
@@ -84,9 +93,9 @@ if (sessionStorage.getItem('color') === null){
   function getSize() {
     $size = $("#sizeSlider").slider("values", 0);
     $("#size").val($size);
-    sessionStorage.setItem('size', $size);
-    $("h1").animate({"font-size":$size + "px"});
-    $("label").animate({"font-size":$size + "px"})
+    //sessionStorage.setItem('size', $size);
+    //$("h1").animate({"font-size":$size + "px"});
+    //$("label").animate({"font-size":$size + "px"})
   }
 
   </script>
@@ -94,27 +103,28 @@ if (sessionStorage.getItem('color') === null){
 <body>
 
   <h1>Ballot Accessibility Options</h1>
-  <p>Sample Ballot Question</p>
-    <p> Justice of the Peace, Precinct 2, Place 2</p>
-        <input type="radio" /> George E. Risner - <i>Democratic Party</i></input>
+  <p> <txt id= "sample">Sample Ballot Question</txt></p>
+    <p> <txt id= "sample">Justice of the Peace, Precinct 2, Place 2</txt></p>
+        <input type="radio" /> <txt id= "sample">George E. Risner - <i>Democratic Party</i></txt></input>
   <h2> Text Size </h2>
 <div id="sizeSlider"></div>
 <input id="size" type="submit" />
-<!-- <input id = "apply" type="submit" value="Apply Changes" /> -->
+<input id = "applySize" type="submit" value="Apply Changes" />
+<form >
 <h2> Text Boldness </h2>
-
 <p><input type="radio" /> Normal </input></p>
 <p><input type="radio" /> <b> Bold </b> </input></p>
+</form>
 <input id = "apply" type="submit" value="Apply Changes" />
 
 
   <h2> Invert Color</h2>
   <button id="invert" type="button">Invert Color</button>
 
-  <form action="{% url 'polls:toballot'%}" method="post">
+  <!-- <form action="{% url 'polls:toballot'%}" method="post">
     {% csrf_token %}
-  <input type="submit" id="ballot" value="Back To Ballot" />
-  </form>
+   <input type="submit" id="ballot" value="Back To Ballot" />
+  </form> -->
 
 
 </body>
