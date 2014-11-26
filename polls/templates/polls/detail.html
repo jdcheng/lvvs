@@ -14,9 +14,17 @@
       $("body").css('background-color', sessionStorage.getItem('background-color'));
     }
 
-
     alert("" + sessionStorage.getItem('size') + "")
+
+    if (sessionStorage.getItem('size') != 'null'){
     $("body").css('fontSize', sessionStorage.getItem('size') + "px")
+  }
+
+      alert("" + sessionStorage.getItem('boldness') + "")
+
+    if (sessionStorage.getItem('boldness') != 'null'){
+    $("body").css('fontWeight', sessionStorage.getItem('boldness'))
+  }
 
       //$("body").css('text-weight', sessionStorage.getItem('boldness')) 
 
