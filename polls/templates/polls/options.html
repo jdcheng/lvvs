@@ -26,11 +26,22 @@ if (sessionStorage.getItem("boldness") != null) {
   }
     }
 
+  if (sessionStorage.getItem("size") != null) {
+    $("txt[name=sample]").css("font-size", sessionStorage.getItem("size"));
+    $sizeValue = sessionStorage.getItem("size");
+  }
+  else{
+    $sizeValue = "18";
+  }
+
+  $("#size").val($sizeValue);
+
 
 
   $( "#sizeSlider" ).slider({
     min: 18,
     max: 72,
+    value: $sizeValue,
     slide: function(event, ui) {
       getSize();
     } 
@@ -129,7 +140,7 @@ if (sessionStorage.getItem("boldness") != null) {
         <input type="radio" /> <txt name= "sample">George E. Risner - <i>Democratic Party</i></txt></input>
   <h2> Text Size </h2>
 <div id="sizeSlider"></div>
-<input id="size" type="submit" />
+<input id="size" type="button"/>
 <input id = "applySize" type="submit" value="Apply Changes" />
 <form>
 <h2> Text Boldness </h2>
