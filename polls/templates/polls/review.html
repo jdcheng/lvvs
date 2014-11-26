@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Your Choices </title>
+<h1>Your Choices </h1>
+<h2> Review your choices here. </h2>
+  <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+
+{% if question_list %}
+    <ul>
+    {% for question in question_list %}
+    <script>
+    $(document).ready(function(){
+    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null){
+    	choice = "No selection for this race";
+    }
+    else{
+    	choice_dict_val = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
+    	choice = 
+    }
+    $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}" + " - " + choice);
+
+    if (choice == "No selection for this race"){
+    	$("p[id= question_text_{{ question.id }}]").css('fontWeight', 700);
+    }
+
+	});
+    </script>
+    </head>
+    <p id = "question_text_{{ question.id }}">{{ question.question_text }} </p>
+     <form action="{% url 'polls:detail' question.id %}" method="post">
+    {% csrf_token %}
+  <input type="submit" id="change" value="Change Selection" />
+  </form>
+        <!-- <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li> -->
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<html>

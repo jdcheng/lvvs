@@ -18,6 +18,14 @@ class IndexView(generic.ListView):
         """Return the list of questions."""
         return Question.objects.order_by('-id')
 
+class ReviewView(generic.ListView):
+    template_name = 'polls/review.html'
+    context_object_name = 'question_list'
+
+    def get_queryset(self):
+        """Return the list of questions."""
+        return Question.objects.order_by('id')
+
 
 class DetailView(generic.DetailView):
     model = Question
@@ -165,6 +173,9 @@ def options(request, question_id):
 
 def options_base(request):
     return render(request, 'polls/options.html')
+
+#def review(request):
+ #   return render(request, 'polls/review.html')
 
 def submit_options(request):
     return render(request, 'polls/thanks.html')
