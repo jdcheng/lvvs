@@ -59,13 +59,24 @@ if (sessionStorage.getItem('color') === null){
     $("#applySize").click(function(event) {
       event.preventDefault();
       sessionStorage.setItem('size', $size);
-      $("txt[id=sample]").animate({"font-size":$size + "px"});
-      $("label").animate({"font-size":$size + "px"})
+      $("txt[name=sample]").animate({"font-size":$size + "px"});
     });
   
     $("a").click(function() {
     $("a").removeClass("selected");
     $(this).addClass("selected");
+    });
+
+    $("#applyBold").click(function(event){
+      if ($("input[id='normal']:checked").val()) {
+        sessionStorage.setItem("boldness", 400)
+        $("txt[name=sample]").animate({"font-weight":400});
+      }
+      if ($("input[id='bold']:checked").val()) {
+        sessionStorage.setItem("boldness", 700)
+        $("txt[name=sample]").animate({"font-weight":700})
+      }
+
     });
 
 
@@ -103,19 +114,20 @@ if (sessionStorage.getItem('color') === null){
 <body>
 
   <h1>Ballot Accessibility Options</h1>
-  <p> <txt id= "sample">Sample Ballot Question</txt></p>
-    <p> <txt id= "sample">Justice of the Peace, Precinct 2, Place 2</txt></p>
-        <input type="radio" /> <txt id= "sample">George E. Risner - <i>Democratic Party</i></txt></input>
+  <p> <txt name= "sample">Sample Ballot Question</txt></p>
+    <p> <txt name= "sample">Justice of the Peace, Precinct 2, Place 2</txt></p>
+        <input type="radio" /> <txt name= "sample">George E. Risner - <i>Democratic Party</i></txt></input>
   <h2> Text Size </h2>
 <div id="sizeSlider"></div>
 <input id="size" type="submit" />
 <input id = "applySize" type="submit" value="Apply Changes" />
-<form >
+<form>
 <h2> Text Boldness </h2>
-<p><input type="radio" /> Normal </input></p>
-<p><input type="radio" /> <b> Bold </b> </input></p>
+<form>
+<p><input name = "boldSelect" id = "normal" type="radio" > Normal </input></p>
+<p><input name = "boldSelect" id = "bold" type="radio" > <b> Bold </b> </input></p>
 </form>
-<input id = "apply" type="submit" value="Apply Changes" />
+<input id = "applyBold" type="submit" value="Apply Changes" />
 
 
   <h2> Invert Color</h2>
