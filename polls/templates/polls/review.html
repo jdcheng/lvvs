@@ -14,11 +14,18 @@
 
     if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null){
     	choice = "No selection for this race";
+        name = "No selection for this race";
+        party = "";
     }
     else{
     	choice = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
+        name = sessionStorage.getItem("remember_name_for_{{ question.id }}");
+        party = " - " + sessionStorage.getItem("remember_party_for_{{ question.id }}");
     }
-    $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}" + " - " + choice);
+    $("label[id = label{{ question.id }}]").text(name + party);
+    $("label[id = label{{ question.id }}]").css('fontWeight', 'bold');
+    $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
+    $("p[id= question_text_{{ question.id }}]").css('fontWeight', 'bold');
 
 
     //if (choice == "No selection for this race"){
@@ -27,6 +34,7 @@
 
     if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null){
         $("div[id = {{ question.id }}]").attr("id", sessionStorage.getItem("remember_choice_for_{{ question.id }}"));
+
     }
     //alert("check")
 
@@ -35,29 +43,16 @@
     </head>
     <p id = "question_text_{{ question.id }}">{{ question.question_text }} </p>
     <div id = "{{ question.id }}"></div>
-      {% for choice in question.choice_set.all %}
-      {% if div.id == question.id %}
-        <!-- <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-      <label for="There was no selection for this race."> -->
-      {% endif %}
-      {% if choice.id == div.id %}
-      <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-      <label for="choice{{ forloop.counter }}"><font size = "{{choiceSize}}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> </label><br />
-        {% else %}
-        <script>
-        $(document).ready(function(){
-            alert("toast");
-        });
-        </script>
-      {% endif %}
+      <input type="radio" name="choice" id="choice" value="{{ choice}}" />
+      <label id = "label{{ question.id }}"></label><br />
 
-  {% endfor %}
-     <form action="{% url 'polls:detail' question.id %}" method="post">
+     <!--  <form action="{% url 'polls:detail' question.id %}" method="post">
     {% csrf_token %}
   <input type="submit" id="change" value="Change Selection" />
-  </form>
-        <!-- <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li> -->
+  </form> -->
+        <li><a href="{% url 'polls:detail' question.id %}">Change Selection</a></li>
     {% endfor %}
+      <p><li><a href="{% url 'polls:survey'%}">Confirm Vote and Go to Survey</a></li></p>
     </ul>
 {% else %}
     <p>No polls are available.</p>

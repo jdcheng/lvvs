@@ -36,10 +36,14 @@
       if ($("input[name='choice']:checked").val()) {
         sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
                 //alert("test2");
-        id = $('input[type=radio]:checked').attr('id');
-        var label = $('label[for = {{id}}]').html();
-        sessionStorage.setItem("remember_text_for_{{ question.id }}", label);
-        ;
+        var $id = $('input[type=radio]:checked').attr('id');
+        //alert($id)
+        var $name = $('label[for = ' + $id + ' ]').attr("name");
+        //alert($name)
+        var $party = $('label[for = ' + $id + ' ]').attr("party");
+        //alert($party)
+        sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
+        sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);;
       }
     });
 
@@ -63,7 +67,7 @@
   {% csrf_token %}
   {% for choice in question.choice_set.all %}
       <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-      <label for="choice{{ forloop.counter }}"><font size = "{{choiceSize}}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> 
+      <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "{{choiceSize}}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> 
 
       </label><br />
   {% endfor %}
@@ -77,7 +81,7 @@
     {% csrf_token %}
   <input type="submit" id="forward" value="Next Race" />
   </form> -->
-  <input type= "submit" id = "deselect" value = "Deselect Choice" />
+  <p><input type= "submit" id = "deselect" value = "Deselect Choice" /></p>
 
     <form action="{% url 'polls:options' question.id %}" method="post">
     {% csrf_token %}
