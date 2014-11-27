@@ -43,6 +43,13 @@
       }
     });
 
+    $("#deselect").click(function(event){
+      if ($("input[name='choice']:checked").val()) {
+        $('input[type=radio]:checked').prop("checked", false);
+        sessionStorage.setItem("remember_choice_for_{{ question.id }}", null);
+      }
+    });
+
   });
   </script>
 </head>
@@ -70,6 +77,8 @@
     {% csrf_token %}
   <input type="submit" id="forward" value="Next Race" />
   </form> -->
+  <input type= "submit" id = "deselect" value = "Deselect Choice" />
+
     <form action="{% url 'polls:options' question.id %}" method="post">
     {% csrf_token %}
   <input type="submit" id="options" value="Accessibility Options" />
