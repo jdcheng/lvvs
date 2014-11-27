@@ -23,6 +23,10 @@ input[type = submit]{
   width: 20em; height: 2em;
 }
 
+input[type = radio]{
+  size: 12;
+}
+
 a.selected  {  background:#000;
                color:#fff !important;}
 

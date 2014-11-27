@@ -67,7 +67,7 @@
   {% csrf_token %}
   {% for choice in question.choice_set.all %}
       <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-      <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "{{choiceSize}}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> 
+      <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "72px">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> 
 
       </label><br />
   {% endfor %}
@@ -88,10 +88,12 @@
   <input type="submit" id="options" value="Accessibility Options" />
   </form>
 
-  <form action="{% url 'polls:review' %}" method="post">
+  <p><li><a href="{% url 'polls:review'%}">Review All Races</a></li></p>
+
+  <!-- <form action="{% url 'polls:review' %}" method="post">
     {% csrf_token %}
   <input type="submit" id="review" value="Review All Races" />
-  </form>
-  
+  </form> -->
+
 </body>
 </html>
