@@ -35,6 +35,11 @@
     $("#vote").click(function(event){
       if ($("input[name='choice']:checked").val()) {
         sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
+                //alert("test2");
+        id = $('input[type=radio]:checked').attr('id');
+        var label = $('label[for = {{id}}]').html();
+        sessionStorage.setItem("remember_text_for_{{ question.id }}", label);
+        ;
       }
     });
 
@@ -51,18 +56,20 @@
   {% csrf_token %}
   {% for choice in question.choice_set.all %}
       <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-      <label for="choice{{ forloop.counter }}"><font size = "{{choiceSize}}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> </label><br />
+      <label for="choice{{ forloop.counter }}"><font size = "{{choiceSize}}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> 
+
+      </label><br />
   {% endfor %}
-  <input type="submit" id="vote" value="Vote" />
+  <input type="submit" id="vote" value="Next Race" />
   </form>
   <form action="{% url 'polls:back' question.id %}" method="post">
     {% csrf_token %}
   <input type="submit" id="previous" value="Previous Race" />
   </form>
-  <form action="{% url 'polls:forward' question.id %}" method="post">
+  <!-- <form action="{% url 'polls:forward' question.id %}" method="post">
     {% csrf_token %}
   <input type="submit" id="forward" value="Next Race" />
-  </form>
+  </form> -->
     <form action="{% url 'polls:options' question.id %}" method="post">
     {% csrf_token %}
   <input type="submit" id="options" value="Accessibility Options" />
