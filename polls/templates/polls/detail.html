@@ -87,5 +87,11 @@
     {% csrf_token %}
   <input type="submit" id="options" value="Accessibility Options" />
   </form>
+
+  <form action="{% url 'polls:review' %}" method="post">
+    {% csrf_token %}
+  <input type="submit" id="review" value="Review All Races" />
+  </form>
+  
 </body>
 </html>
