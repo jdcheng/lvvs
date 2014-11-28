@@ -28,6 +28,15 @@ html *
   font-family: Arial !important;
 }
 
+input[type=radio] { 
+margin: 1em 1em 1em 0; 
+transform: scale(3, 3); 
+-moz-transform: scale(3, 3); 
+-ms-transform: scale(3, 3); 
+-webkit-transform: scale(3, 3); 
+-o-transform: scale(3, 3); 
+}
+
 a.selected  {  background:#000;
                color:#fff !important;}
 

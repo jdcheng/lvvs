@@ -156,7 +156,6 @@ def vote(request, question_id):
 
         # TODO: remove this hardcoded number
         if p.id == 162: # go to review page when done with voting
-            print p.id
             return render(request, 'polls/review.html')
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
