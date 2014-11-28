@@ -77,9 +77,9 @@
   {% endfor %}
   <input type="submit" id="vote" value="Next Race" />
   </form>
-  <form action="{% url 'polls:back' question.id %}" method="post">
+  <form action="{% url 'polls:vote_previous' question.id %}" method="post">
     {% csrf_token %}
-  <input type="submit" id="previous" value="Previous Race" />
+  <input type="submit" id="vote" value="Previous Race" />
   </form>
   <!-- <form action="{% url 'polls:forward' question.id %}" method="post">
     {% csrf_token %}

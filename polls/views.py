@@ -162,6 +162,32 @@ def vote(request, question_id):
         # user hits the Back button.
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
 
+def vote_previous(request, question_id):
+    print question_id
+    p = get_object_or_404(Question, pk=question_id)
+    try:
+        selected_choice = p.choice_set.get(pk=request.POST['choice'])
+        all_questions[question_id] = request.POST['choice']
+        request.session['all_questions'] = all_questions
+    except (KeyError, Choice.DoesNotExist):
+        # Go to the next race; a no vote
+        p = get_object_or_404(Question, pk=question_id)
+        return HttpResponseRedirect(reverse('polls:detail', args=(p.id-1,)))
+        #return render(request, 'polls/detail.html', {
+        #    'question': p,
+        #    'error_message': "You didn't select a choice.",
+        #})
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+
+        # TODO: remove this hardcoded number
+
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+    return HttpResponseRedirect(reverse('polls:detail', args=(p.id-1,)))
+
 def forward(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
