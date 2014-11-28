@@ -48,8 +48,8 @@ if (sessionStorage.getItem("boldness") != null) {
   $("#size").val($sizeValue);
 
   $( "#sizeSlider" ).slider({
-    min: 18,
-    max: 72,
+    min: 46,
+    max: 144,
     value: $sizeValue,
     slide: function(event, ui) {
       getSize();
@@ -110,9 +110,9 @@ if (sessionStorage.getItem("boldness") != null) {
 <body>
 
   <h1>Ballot Accessibility Options</h1>
-  <p> <txt name= "sample">Sample Ballot Question</txt></p>
-    <p> <txt name= "sample">Justice of the Peace, Precinct 2, Place 2</txt></p>
-        <input type="radio" /> <txt name= "sample">George E. Risner - <i>Democratic Party</i></txt></input>
+  <p> <font size = 72><txt name= "sample">Sample Ballot Question</txt></font?</p>
+    <p> <font size= 72><txt name= "sample">Justice of the Peace, Precinct 2, Place 2</txt></font></p>
+        <input type="radio" /> <txt name= "sample"><font size = 72>George E. Risner - <i>Democratic Party</i></font></txt></input>
   <h2> Text Size </h2>
 <div id="sizeSlider"></div>
 <input id="size" type="button"/>

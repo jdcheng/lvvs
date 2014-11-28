@@ -1,4 +1,36 @@
 <html>
+  <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+  <link href="{{ STATIC_URL }}website_static/newsurvey.css" rel="stylesheet" type="text/css" title="main" media="screen" />
+
+ <script>
+
+$(document).ready(function(){
+
+    if (sessionStorage.getItem('color') != 'null') {
+      $("body").css('color', sessionStorage.getItem('color'));
+    }
+
+    if (sessionStorage.getItem('background-color-color') != 'null') {
+      $("body").css('background-color', sessionStorage.getItem('background-color'));
+    }
+
+    // alert("" + sessionStorage.getItem('size') + "")
+
+    if (sessionStorage.getItem('size') != 'null'){
+    $("body").css('fontSize', sessionStorage.getItem('size') + "px")
+  }
+
+      //alert("" + sessionStorage.getItem('boldness') + "")
+
+    if (sessionStorage.getItem('boldness') != 'null'){
+    $("body").css('fontWeight', sessionStorage.getItem('boldness'))
+  }
+
+  $("{{ form.as_p }}").css('font-family', "Arial")
+
+});
+
+</script>
 <h1>Post-Voting Survey</h1>
 <form action="{% url 'polls:survey' %}" method="post">
     {% csrf_token %}

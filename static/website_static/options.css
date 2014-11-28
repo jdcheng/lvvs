@@ -23,6 +23,11 @@ input[type = submit]{
   width: 20em; height: 2em;
 }
 
+html *
+{
+  font-family: Arial !important;
+}
+
 a.selected  {  background:#000;
                color:#fff !important;}
 
