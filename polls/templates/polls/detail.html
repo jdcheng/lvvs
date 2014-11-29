@@ -42,7 +42,7 @@
             // alert($party)
             $('input[type=radio]').prop("disabled", true);
             sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
-            testval=sessionStorage.getItem("remember_name_for_{{ question.id }}");
+            sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);;
           }
         });
       
@@ -81,7 +81,7 @@
         <input type="submit" style="-webkit-appearance: none; font-size: 1.5em;float:left; margin:15px" id="vote" value="Submit" />
       {% endif %}
     </form>
-    <input type="submit" disabled=true style="-webkit-appearance: none; visibility:hidden; font-size: 1em; float:left; margin:15px" id="space" value="[laceholder" />
+    <input type="submit" disabled=true style="-webkit-appearance: none; visibility:hidden; font-size: 1em;float:left; margin:15px" id="space" value="placeholder" />
     <form action="{% url 'polls:vote_previous' question.id %}" method="post">
       {% csrf_token %}
       {% if question.id|add:"0" != 136 %}  
