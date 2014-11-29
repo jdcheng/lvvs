@@ -40,18 +40,19 @@
         
         if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null){
           choice = "No selection for this race";
-            name = "No selection for this race";
-            party = "";
+          name = "No selection for this race";
+          party = "";
         }
         else{
           choice = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
-            name = sessionStorage.getItem("remember_name_for_{{ question.id }}");
-            if (sessionStorage.getItem("remember_party_for_{{ question.id }}") != ' '){
-                party = " - " + sessionStorage.getItem("remember_party_for_{{ question.id }}");
-            }
-            else{
-               party = sessionStorage.getItem("remember_party_for_{{ question.id }}"); 
-            }
+          name = sessionStorage.getItem("remember_name_for_{{ question.id }}");
+          console.log(name);
+          if (sessionStorage.getItem("remember_party_for_{{ question.id }}") != ' ') {
+            party = " - " + sessionStorage.getItem("remember_party_for_{{ question.id }}");
+          }
+          else {
+            party = sessionStorage.getItem("remember_party_for_{{ question.id }}"); 
+          }
         }
         $("label[id = label{{ question.id }}]").text(name + party);
         $("label[id = label{{ question.id }}]").css('fontWeight', 'bold');
@@ -63,9 +64,8 @@
         //  $("p[id= question_text_{{ question.id }}]").css('fontWeight', 700);
         //}
         
-        if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null){
-            $("div[id = {{ question.id }}]").attr("id", sessionStorage.getItem("remember_choice_for_{{ question.id }}"));
-        
+        if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
+          $("div[id = {{ question.id }}]").attr("id", sessionStorage.getItem("remember_choice_for_{{ question.id }}"));
         }
         //alert("check")
         
