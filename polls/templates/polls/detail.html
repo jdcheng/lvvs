@@ -42,12 +42,15 @@
         //alert($name)
         var $party = $('label[for = ' + $id + ' ]').attr("party");
         //alert($party)
+        $('input[type=radio]:all').prop("disabled", true);
         sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
         sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);;
+
       }
     });
 
     $("#deselect").click(function(event){
+      $('input[type=radio]').prop("disabled", false);
       if ($("input[name='choice']:checked").val()) {
         $('input[type=radio]:checked').prop("checked", false);
         sessionStorage.setItem("remember_choice_for_{{ question.id }}", null);
