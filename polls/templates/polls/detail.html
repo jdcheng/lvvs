@@ -78,11 +78,16 @@
       </label><br />
       {% endif %}
   {% endfor %}
-  <input type="submit" id="vote" value="Next Race" />
+  {% if question.id|add:"0" != 162 %}
+    <input type="submit" id="vote" value="Next Race" />
+  {% endif %}
   </form>
   <form action="{% url 'polls:vote_previous' question.id %}" method="post">
     {% csrf_token %}
-  <input type="submit" id="vote" value="Previous Race" />
+
+  {% if question.id|add:"0" != 136 %}  
+    <input type="submit" id="previous" value="Previous Race" />
+  {% endif %}
   </form>
   <!-- <form action="{% url 'polls:forward' question.id %}" method="post">
     {% csrf_token %}
