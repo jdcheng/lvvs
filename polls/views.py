@@ -1,7 +1,7 @@
 import csv
 import time
 from django import forms
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views import generic
@@ -156,7 +156,7 @@ def vote(request, question_id):
 
         # TODO: remove this hardcoded number
         if p.id == 162: # go to review page when done with voting
-            return render(request, 'polls/review.html')
+            return HttpResponseRedirect('http://lvvs.me/polls/review')
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.

@@ -78,8 +78,11 @@
       </label><br />
       {% endif %}
   {% endfor %}
+  
   {% if question.id|add:"0" != 162 %}
     <input type="submit" id="vote" value="Next Race" />
+  {% else %}
+    <input type="submit" id="vote" value="Submit" />
   {% endif %}
   </form>
   <form action="{% url 'polls:vote_previous' question.id %}" method="post">
