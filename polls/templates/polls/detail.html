@@ -1,120 +1,114 @@
 <html>
-<head>
-  <link href="{{ STATIC_URL }}website_static/detail.css" rel="stylesheet" type="text/css" title="main" media="screen" />
-
-  <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
-  <script>
-  $(document).ready(function(){
-
-    if (sessionStorage.getItem('color') != 'null') {
-      $("body").css('color', sessionStorage.getItem('color'));
-    }
-
-    if (sessionStorage.getItem('background-color-color') != 'null') {
-      $("body").css('background-color', sessionStorage.getItem('background-color'));
-    }
-
-    // alert("" + sessionStorage.getItem('size') + "")
-
-    if (sessionStorage.getItem('size') != 'null'){
-    $("body").css('fontSize', sessionStorage.getItem('size') + "px")
-  }
-
-      //alert("" + sessionStorage.getItem('boldness') + "")
-
-    if (sessionStorage.getItem('boldness') != 'null'){
-    $("body").css('fontWeight', sessionStorage.getItem('boldness'))
-  }
-
-      //$("body").css('text-weight', sessionStorage.getItem('boldness')) 
-
-    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
-      $("input[value="+sessionStorage.getItem('remember_choice_for_{{ question.id }}')+"]").prop("checked", true);
-    };
-
-    $("#vote").click(function(event){
-      if ($("input[name='choice']:checked").val()) {
-        sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
-                //alert("test2");
-        var $id = $('input[type=radio]:checked').attr('id');
-        //alert($id)
-        var $name = $('label[for = ' + $id + ' ]').attr("name");
-        //alert($name)
-        var $party = $('label[for = ' + $id + ' ]').attr("party");
-        //alert($party)
-        $('input[type=radio]:all').prop("disabled", true);
-        sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
-        sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);;
-
+  <head>
+    <link href="{{ STATIC_URL }}website_static/detail.css" rel="stylesheet" type="text/css" title="main" media="screen" />
+    <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
+    <script>
+      $(document).ready(function(){
+      
+        if (sessionStorage.getItem('color') != 'null') {
+          $("body").css('color', sessionStorage.getItem('color'));
+        }
+      
+        if (sessionStorage.getItem('background-color-color') != 'null') {
+          $("body").css('background-color', sessionStorage.getItem('background-color'));
+        }
+      
+        // alert("" + sessionStorage.getItem('size') + "")
+      
+        if (sessionStorage.getItem('size') != 'null'){
+        $("body").css('fontSize', sessionStorage.getItem('size') + "px")
       }
-    });
-
-    $("#deselect").click(function(event){
-      $('input[type=radio]').prop("disabled", false);
-      if ($("input[name='choice']:checked").val()) {
-        $('input[type=radio]:checked').prop("checked", false);
-        sessionStorage.setItem("remember_choice_for_{{ question.id }}", null);
+      
+          //alert("" + sessionStorage.getItem('boldness') + "")
+      
+        if (sessionStorage.getItem('boldness') != 'null'){
+        $("body").css('fontWeight', sessionStorage.getItem('boldness'))
       }
-    });
-
-  });
-  </script>
-</head>
-<body>
-
-  <h1><font size = "{{titleSize}}">{{ question.question_text }}</font></h1>
-
-  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-  <form action="{% url 'polls:vote' question.id %}" method="post">
-  {% csrf_token %}
-  {% for choice in question.choice_set.all %}
-      <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-  {% if choice.party_description != ' ' %}
-      <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "72px">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> 
-      </label><br />
-  {% else %}
-    <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "72px">{{ choice.choice_text }}</font></i> 
-      </label><br /><br />
+      
+          //$("body").css('text-weight', sessionStorage.getItem('boldness')) 
+      
+        if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
+          $("input[value="+sessionStorage.getItem('remember_choice_for_{{ question.id }}')+"]").prop("checked", true);
+        };
+      
+        $("#vote").click(function(event){
+          if ($("input[name='choice']:checked").val()) {
+            sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
+                    //alert("test2");
+            var $id = $('input[type=radio]:checked').attr('id');
+            //alert($id)
+            var $name = $('label[for = ' + $id + ' ]').attr("name");
+            //alert($name)
+            var $party = $('label[for = ' + $id + ' ]').attr("party");
+            //alert($party)
+            $('input[type=radio]:all').prop("disabled", true);
+            sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
+            sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);;
+      
+          }
+        });
+      
+        $("#deselect").click(function(event){
+          $('input[type=radio]').prop("disabled", false);
+          if ($("input[name='choice']:checked").val()) {
+            $('input[type=radio]:checked').prop("checked", false);
+            sessionStorage.setItem("remember_choice_for_{{ question.id }}", null);
+          }
+        });
+      
+      });
+    </script>
+  </head>
+  <body>
+    <h1><font size = "{{titleSize}}">{{ question.question_text }}</font></h1>
+    {% if error_message %}
+      <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+      {% csrf_token %}
+      {% for choice in question.choice_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+        {% if choice.party_description != ' ' %}
+          <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "72px">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> 
+        </label><br />
+        {% else %}
+          <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "72px">{{ choice.choice_text }}</font></i> 
+        </label><br /><br />
       {% endif %}
-  {% endfor %}
-  <br>
-  {% if question.id|add:"0" != 162 %}
-    <input type="submit" style="-webkit-appearance: none; font-size: 1.5em; float:left; margin:15px" id="vote" value="Next Race" />
-  {% else %}
-    <input type="submit" style="-webkit-appearance: none; font-size: 1.5em;float:left; margin:15px" id="vote" value="Submit" />
-  {% endif %}
-  </form>
-  
-  <form action="{% url 'polls:vote_previous' question.id %}" method="post">
-    {% csrf_token %}
-
-  {% if question.id|add:"0" != 136 %}  
-    <input type="submit" style="-webkit-appearance: none; font-size: 1.5em;float:left" id="previous" value="Previous Race" />
-  {% endif %}
-  </form>
-  <!-- <form action="{% url 'polls:forward' question.id %}" method="post">
-    {% csrf_token %}
-  <input type="submit" id="forward" value="Next Race" />
-  </form> -->
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <p><input type= "submit" style="-webkit-appearance: none; font-size: 1.5em; margin:15px" id = "deselect" value = "Deselect Choice" /></p>
-
+      {% endfor %}
+      <br>
+      {% if question.id|add:"0" != 162 %}
+        <input type="submit" style="-webkit-appearance: none; font-size: 1.5em; float:left; margin:15px" id="vote" value="Next Race" />
+      {% else %}
+        <input type="submit" style="-webkit-appearance: none; font-size: 1.5em;float:left; margin:15px" id="vote" value="Submit" />
+      {% endif %}
+    </form>
+    <form action="{% url 'polls:vote_previous' question.id %}" method="post">
+      {% csrf_token %}
+      {% if question.id|add:"0" != 136 %}  
+        <input type="submit" style="-webkit-appearance: none; font-size: 1.5em;float:left" id="previous" value="Previous Race" />
+      {% endif %}
+    </form>
+    <!-- <form action="{% url 'polls:forward' question.id %}" method="post">
+      {% csrf_token %}
+      <input type="submit" id="forward" value="Next Race" />
+      </form> -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p><input type= "submit" style="-webkit-appearance: none; font-size: 1.5em; margin:15px" id = "deselect" value = "Deselect Choice" /></p>
     <form action="{% url 'polls:options' question.id %}" method="post">
-    {% csrf_token %}
-  <input type="submit" style="-webkit-appearance: none; font-size: 1.5em; margin:15px" id="options" value="Accessibility Options" />
-  </form>
-
-  <p><li><a href="{% url 'polls:review'%}">Review All Races</a></li></p>
-
-  <!-- <form action="{% url 'polls:review' %}" method="post">
-    {% csrf_token %}
-  <input type="submit" id="review" value="Review All Races" />
-  </form> -->
-
-</body>
+      {% csrf_token %}
+      <input type="submit" style="-webkit-appearance: none; font-size: 1.5em; margin:15px" id="options" value="Accessibility Options" />
+    </form>
+    <p>
+    <li><a href="{% url 'polls:review'%}">Review All Races</a></li>
+    </p>
+    <!-- <form action="{% url 'polls:review' %}" method="post">
+      {% csrf_token %}
+      <input type="submit" id="review" value="Review All Races" />
+      </form> -->
+  </body>
 </html>
