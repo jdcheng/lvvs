@@ -106,11 +106,26 @@ if (sessionStorage.getItem("boldness") != null) {
     //$("label").animate({"font-size":$size + "px"})
   }
 
+  function validate_user_id() {
+    var x = document.getElementById("user_id").value;
+    if (x==null || x=="") {
+        alert("Please enter your user id");
+        document.getElementById("user_id").style.backgroundColor = "FF9494";
+        return false;
+    }
+  }
+
   </script>
 </head>
 <body>
 
-	<p><font size="18">Thank you for participating in our research study. In the following steps you will be voting in a fictitious election. Please take the time to adjust the following accessibility options as you see fit.</font></p>
+	<p><font size="18">Thank you for participating in our research study. In the following steps you will be voting in a fictitious election. Please enter your user ID and adjust the following accessibility options as you see fit.</font></p>
+  <br>
+
+  <h1  style="float:left;" >User ID: </h1><input style="position:relative; margin:20px; font-size:24px" type="text" id="user_id" ></input>
+  <br>
+  <br>
+
 
   <h1>Ballot Accessibility Options</h1>
   <p> <txt name= "sample">Sample Ballot Question</txt></p>
@@ -134,7 +149,7 @@ if (sessionStorage.getItem("boldness") != null) {
 
 <br />
 <br />
-<form id = "start" action="136" method="get">
+<form id = "start" action="136" onsubmit="return validate_user_id()" method="get">
     <input type="submit" id="start_button" value="Begin" style="height:120px; width:120px; font-size:32px"/>
 </form>
 </body>
