@@ -20,7 +20,7 @@
               transition:.25s ease-out;}
 
 input[type = submit]{
-  width: 20em; height: 2em;
+  width: 10em; height: 2em;
 }
 
 input[type = radio]{

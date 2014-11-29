@@ -75,32 +75,38 @@
       </label><br />
   {% else %}
     <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "72px">{{ choice.choice_text }}</font></i> 
-      </label><br />
+      </label><br /><br />
       {% endif %}
   {% endfor %}
-  
+  <br>
   {% if question.id|add:"0" != 162 %}
-    <input type="submit" id="vote" value="Next Race" />
+    <input type="submit" style="-webkit-appearance: none; font-size: 1.5em; float:left; margin:15px" id="vote" value="Next Race" />
   {% else %}
-    <input type="submit" id="vote" value="Submit" />
+    <input type="submit" style="-webkit-appearance: none; font-size: 1.5em;float:left; margin:15px" id="vote" value="Submit" />
   {% endif %}
   </form>
+  
   <form action="{% url 'polls:vote_previous' question.id %}" method="post">
     {% csrf_token %}
 
   {% if question.id|add:"0" != 136 %}  
-    <input type="submit" id="previous" value="Previous Race" />
+    <input type="submit" style="-webkit-appearance: none; font-size: 1.5em;float:left" id="previous" value="Previous Race" />
   {% endif %}
   </form>
   <!-- <form action="{% url 'polls:forward' question.id %}" method="post">
     {% csrf_token %}
   <input type="submit" id="forward" value="Next Race" />
   </form> -->
-  <p><input type= "submit" id = "deselect" value = "Deselect Choice" /></p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p><input type= "submit" style="-webkit-appearance: none; font-size: 1.5em; margin:15px" id = "deselect" value = "Deselect Choice" /></p>
 
     <form action="{% url 'polls:options' question.id %}" method="post">
     {% csrf_token %}
-  <input type="submit" id="options" value="Accessibility Options" />
+  <input type="submit" style="-webkit-appearance: none; font-size: 1.5em; margin:15px" id="options" value="Accessibility Options" />
   </form>
 
   <p><li><a href="{% url 'polls:review'%}">Review All Races</a></li></p>
