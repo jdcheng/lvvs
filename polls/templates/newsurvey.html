@@ -1,6 +1,6 @@
 <html>
   <script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
-  <link href="{{ STATIC_URL }}website_static/newsurvey.css" rel="stylesheet" type="text/css" title="main" media="screen" />
+  <link href="{{ STATIC_URL }}website_static/css/newsurvey.css" rel="stylesheet" type="text/css" title="main" media="screen" />
 
  <script>
 
@@ -34,7 +34,7 @@ $(document).ready(function(){
 <h1>Post-Voting Survey</h1>
 <form action="{% url 'polls:survey' %}" method="post">
     {% csrf_token %}
-     {{ form.as_p }}
+    {{ form.as_p }}
     <input type="submit" value="Submit" />
 </form>
 </html>

@@ -145,6 +145,9 @@ def vote(request, question_id):
     except (KeyError, Choice.DoesNotExist):
         # Go to the next race; a no vote
         p = get_object_or_404(Question, pk=question_id)
+        # TODO: remove this hardcoded number
+        if p.id == 162: # go to review page when done with voting
+            return HttpResponseRedirect('http://lvvs.me/polls/review')
         return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
         #return render(request, 'polls/detail.html', {
         #    'question': p,
