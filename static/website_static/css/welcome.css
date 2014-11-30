@@ -22,3 +22,21 @@ html *
     *display: inline;
     margin: 5px;
 }
+
+.body {
+  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 80%;
+
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
