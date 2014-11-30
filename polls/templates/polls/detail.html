@@ -17,7 +17,12 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div id="container" class="container-fluid">
-              <div class="spaced-button"><a class="btn btn-large" href="#">Settings</a></div> 
+              <div class="spaced-button">
+                <form action="{% url 'polls:options' question.id %}" method="post">
+                  {% csrf_token %}
+                  <input type="submit" class="btn btn-large" id="options" value="Settings"/>
+                </form>
+              </div> 
               <div class="spaced-button"><a class="btn btn-large" href="#">Help</a></div> 
               <div class="spaced-button"><a class="btn btn-large" href="#">Review</a></div> 
               <span class="stretch"></span>
@@ -63,10 +68,7 @@
 
       <br>
       <p><input type= "submit" style="-webkit-appearance: none; font-size: 1.5em; margin:15px" id = "deselect" value = "Deselect Choice" /></p>
-      <form action="{% url 'polls:options' question.id %}" method="post">
-        {% csrf_token %}
-        <input type="submit" style="-webkit-appearance: none; font-size: 1.5em; margin:15px" id="options" value="Accessibility Options" />
-      </form>
+      
       <p>
       <li><a href="{% url 'polls:review'%}">Review All Races</a></li>
       </p>

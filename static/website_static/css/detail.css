@@ -1,7 +1,3 @@
-input[type = submit]{
-  width: 10em; height: 2em;
-}
-
 input[type = radio] { 
   size: 12;
   margin: 1em 1em 1em 10em; 
