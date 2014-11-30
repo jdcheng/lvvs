@@ -163,7 +163,6 @@ def vote(request, question_id):
     return HttpResponseRedirect(reverse('polls:detail', args=(p.id+1,)))
 
 def vote_previous(request, question_id):
-    print question_id
     p = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = p.choice_set.get(pk=request.POST['choice'])
@@ -180,8 +179,6 @@ def vote_previous(request, question_id):
     else:
         selected_choice.votes += 1
         selected_choice.save()
-
-        # TODO: remove this hardcoded number
 
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
@@ -214,22 +211,8 @@ def options(request, question_id):
 def options_base(request):
     return render(request, 'polls/options.html')
 
-#def review(request):
- #   return render(request, 'polls/review.html')
-
 def submit_options(request):
     return render(request, 'polls/thanks.html')
 
 def slider(request):
     return render(request, 'polls/slider.html')
-
-
-def submit_survey(request):
-    filename = 'survey' + '_' + time.strftime("%d_%m_%Y") + '_' + time.strftime("%H%M%S") + '.csv'
-    with open(filename, 'wb') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=',',
-                                quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
-        spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
-
-    return render(request, 'polls/thanks.html')
