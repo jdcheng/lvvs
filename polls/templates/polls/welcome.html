@@ -5,39 +5,54 @@
   <!-- Bootstrap -->
   <link href="{{ STATIC_URL }}website_static/css/bootstrap.css" rel="stylesheet" media="screen">
   <link href="{{ STATIC_URL }}website_static/css/bootstrap-responsive.css" rel="stylesheet">
-  
+
   <link href="{{ STATIC_URL }}website_static/css/welcome.css" rel="stylesheet" type="text/css" title="main" media="screen" />
+  <link href="{{ STATIC_URL }}website_static/css/sticky_footer.css" rel="stylesheet" type="text/css" title="main" media="screen" />
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
   <script src="{{ STATIC_URL }}website_static/js/bootstrap.min.js"></script>
   <script src="{{ STATIC_URL }}website_static/js/welcome.js"></script>
+  <script src="{{ STATIC_URL }}website_static/js/bootstrap-transition.js"></script>
   
 </head>
 <body>
 
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div id="container" class="container-fluid">
-            <div class="spaced-button"><a class="btn btn-large" href="#">Settings</a></div> 
-            <div class="spaced-button"><a class="btn btn-large" href="#">Help</a></div> 
-            <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:review'%}">Review</a></div> 
-            <span class="stretch"></span>
+  <!-- Part 1: Wrap all page content here -->
+  <div id="wrap">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div id="container" class="container-fluid">
+          <div class="spaced-button"><a class="btn btn-large" href="#">Settings</a></div> 
+          <div class="spaced-button"><a class="btn btn-large" href="#">Help</a></div> 
+          <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:review'%}">Review</a></div> 
+          <span class="stretch"></span>
+        </div>
       </div>
     </div>
+
+    <div class="container">
+      <p>General Election Ballot</p>
+      <p>Harris County, Texas</p>
+      <p>November 4, 2012</p>
+
+      <h1 style="display:inline-block">User ID: </h1><input type="text" class="input-small" style="height:38.5px; margin-left: 10px" placeholder="User ID" id="user_id" ></input>
+
+    </div> <!-- /container -->
+    <div id="push"></div>    
   </div>
 
-  <div class="container">
-    <p>Thank you for participating in our research study. In the following steps you will be voting in a fictitious election. Please enter your user ID and adjust the following accessibility options as you see fit.</p>
-    <br>
-
-    <h1 style="display:inline-block">User ID: </h1><input type="text" class="input-small" style="height:38.5px; margin-left: 10px" placeholder="User ID" id="user_id" ></input>
-    <br>
-    <br>
-    <form id = "start" action="136" onsubmit="return validate_user_id()" method="get">
-        <input type="submit" id="start_button" value="Begin" style="height:120px; width:120px; font-size:32px"/>
-    </form>
-  </div> <!-- /container -->
+  <div id="footer">
+    <div id="container" class="container-fluid">
+      <div class="spaced-button"></div>
+      <div class="spaced-button">
+        <form id = "start" action="136" onsubmit="return validate_user_id()" method="get">
+          <input type="submit" class="btn btn-large" id="start_button" value="Start"/>
+        </form>
+      </div> 
+      <span class="stretch"></span>
+    </div>
+  </div>
 </body>
 </html>
