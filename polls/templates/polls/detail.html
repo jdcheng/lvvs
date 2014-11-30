@@ -24,7 +24,7 @@
                 </form>
               </div> 
               <div class="spaced-button"><a class="btn btn-large" href="#">Help</a></div> 
-              <div class="spaced-button"><a class="btn btn-large" href="#">Review</a></div> 
+              <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:review'%}">Review</a></div> 
               <span class="stretch"></span>
         </div>
       </div>
@@ -69,13 +69,6 @@
       <br>
       <p><input type= "submit" style="-webkit-appearance: none; font-size: 1.5em; margin:15px" id = "deselect" value = "Deselect Choice" /></p>
       
-      <p>
-      <li><a href="{% url 'polls:review'%}">Review All Races</a></li>
-      </p>
-      <!-- <form action="{% url 'polls:review' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" id="review" value="Review All Races" />
-        </form> -->
     </div> <!-- /container -->
   </body>
 </html>
