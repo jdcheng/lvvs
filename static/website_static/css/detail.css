@@ -18,3 +18,37 @@ html *
 {
   font-family: Arial !important;
 }
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+
+#container {
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+}
+
+.spaced-button {
+  vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    margin: 5px;
+}
+
+.container {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  
+  width: 80%;
+
+  padding: 20px;
+  padding-top: 120px; /* 60px to make the container go all the way to the bottom of the topbar */
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
