@@ -1,13 +1,21 @@
 $(document).ready(function(){
-    if (sessionStorage.getItem('color') != 'null') {
-      $("body").css('color', sessionStorage.getItem('color'));
+    if (sessionStorage.getItem('color') == null) {
+        sessionStorage.setItem('color', 'black');
+    } else {
+        $(".container").css('color', sessionStorage.getItem('color'));
     }
 
-    if (sessionStorage.getItem('background-color-color') != 'null') {
-      $("body").css('background-color', sessionStorage.getItem('background-color'));
+    if (sessionStorage.getItem('background-color') == null) {
+        sessionStorage.setItem('background-color', 'white');
+    } else {
+        if (sessionStorage.getItem('background-color') == 'white') {
+            $(".container").css('background-color', 'white');
+            $(".hero-unit").css('background-color', '#eeeeee');
+        } else {
+            $(".container").css('background-color', 'black');
+            $(".hero-unit").css('background-color', '#111111');
+        }
     }
-
-    // alert("" + sessionStorage.getItem('size') + "")
 
     if (sessionStorage.getItem('size') != 'null'){
       $("body").css('fontSize', sessionStorage.getItem('size') + "px")
