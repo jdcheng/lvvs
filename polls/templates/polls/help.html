@@ -43,7 +43,11 @@
 
     <div id="footer">
       <div id="container" class="container-fluid">
-        <div class="spaced-button"></div>
+        <div class="spaced-button">
+          <form id="previous" action="{% url 'polls:welcome' %}" method="get">
+            <input type="submit" class="btn btn-large" value="Previous"/>
+          </form>
+        </div>
         <div class="spaced-button">
           <form id="next" action="136" method="get">
             <input type="submit" class="btn btn-large btn-success" id="start_button" value="Next"/>
