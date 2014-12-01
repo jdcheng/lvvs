@@ -86,6 +86,7 @@
             <script>
               $("input[name='choice']").change(function(){
                 if ($("input[name='choice']:checked")) {
+                  $("input[name='choice']:radio").attr('disabled', true);
                   sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
                   var $id = $('input[type=radio]:checked').attr('id');
                   //alert($id)
