@@ -33,7 +33,6 @@
         <h1>Review your choices here.</h1>
         <br>
         {% if question_list %}
-        <ul>
           {% for question in question_list %}
           <script>
             $(document).ready(function() {
@@ -55,7 +54,8 @@
                 }
               }
               // $("label[id = label{{ question.id }}]").text($("label[id = label{{ question.id }}]").text + name + party);
-              // alert($("label[id = label{{ question.id }}]").innerHTML);
+              $("#text{{question.id}}").text(name + party);
+              // alert($("#label{{ question.id }}").text);
               // var myLabel = document.getElementById("label[id = label{{ question.id }}]");
               // myLabel.innerHTML = name + party + myLabel.innerHTML;
 
@@ -77,17 +77,17 @@
         
         <p id = "question_text_{{ question.id }}">{{ question.question_text }} </p>
         <div id = "{{ question.id }}"></div>
-        <label class="radio" id = "label{{ question.id }}">
-          <input type="radio" name="choice" value="choice" />
-        </label><br />
-        <!--  <form action="{% url 'polls:detail' question.id %}" method="post">
-          {% csrf_token %}
-          <input type="submit" id="change" value="Change Selection" />
-          </form> -->
-        <li><a href="{% url 'polls:detail' question.id %}">Change Selection</a></li>
-        <br>
+        <div id="choices-container">
+          <label class="radio" id = "label{{ question.id }}">
+            <span id="text{{question.id}}">No selection for this race</span>
+            <input type="radio" name="choice" value="choice" />
+          </label><br />
+          <a href="{% url 'polls:detail' question.id %}">Change Selection</a>
+          <br>
+          <br>
+        </div>
+        
         {% endfor %}
-        </ul>
         {% else %}
           <p>No polls are available.</p>
         {% endif %}

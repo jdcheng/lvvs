@@ -16,6 +16,10 @@ html *
     text-justify: distribute-all-lines;
 }
 
+#choices-container {
+  display: inline-block;
+}
+
 .spaced-button {
 	vertical-align: top;
     display: inline-block;
@@ -33,4 +37,9 @@ html *
   text-align: center;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   background-color: white;
+}
+
+label {
+  font-size: 18px;
+  display: inline;
 }
