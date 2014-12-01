@@ -12,7 +12,20 @@ $(document).ready(function() {
 
     if (sessionStorage.getItem('color') == null) {
         sessionStorage.setItem('color', 'black');
+    } else {
+        $(".container").css('color', sessionStorage.getItem('color'));
+    }
+
+    if (sessionStorage.getItem('background-color') == null) {
         sessionStorage.setItem('background-color', 'white');
+    } else {
+        if (sessionStorage.getItem('background-color') == 'white') {
+            $(".container").css('background-color', 'white');
+            $(".hero-unit").css('background-color', '#eeeeee');
+        } else {
+            $(".container").css('background-color', 'black');
+            $(".hero-unit").css('background-color', '#111111');
+        }
     }
 
     if (sessionStorage.getItem("boldness") != null) {
@@ -69,17 +82,23 @@ $(document).ready(function() {
     $("#invert").click(function(event) {
         event.preventDefault();
         if (sessionStorage.getItem('color') == 'white') {
-            $("body").css('color', 'black');
+            // $("body").css('color', 'black');
+            $(".container").css('color', 'black');
             sessionStorage.setItem('color', 'black');
         } else {
-            $("body").css('color', 'white');
+            // $("body").css('color', 'white');
+            $(".container").css('color', 'white');
             sessionStorage.setItem('color', 'white');
         }
         if (sessionStorage.getItem('background-color') == 'white') {
-            $("body").css('background-color', 'black');
+            // $("body").css('background-color', 'black');
+            $(".container").css('background-color', 'black');
+            $(".hero-unit").css('background-color', '#111111');
             sessionStorage.setItem('background-color', 'black');
         } else {
-            $("body").css('background-color', 'white');
+            // $("body").css('background-color', 'white');
+            $(".container").css('background-color', 'white');
+            $(".hero-unit").css('background-color', '#eeeeee');
             sessionStorage.setItem('background-color', 'white');
         }
     });
