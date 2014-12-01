@@ -33,6 +33,22 @@
                     Help
                   </button>
                 </div> 
+                <div class="spaced-button"><a class="btn btn-large" id ="deselect2">Deselect Choice</a>
+                <script>
+                $(document).ready(function(){
+                    $("#deselect2").click(function(event){
+                      alert("hifirst")
+      $('input[type=radio]').prop("disabled", false);
+      if ($("input[name='choice']:checked").val()) {
+        $('input[type=radio]:checked').prop("checked", false);
+        alert("hi")
+        sessionStorage.setItem("remember_choice_for_{{ question.id }}", null);
+        alert("hicheck")
+      }
+    });
+                });
+                </script>
+                </div> 
                 <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:review'%}">Review</a></div> 
                 <span class="stretch"></span>
           </div>
