@@ -19,10 +19,8 @@ html *
 }
 
 #choices-container {
-  
-  width: 60%;
+  display: inline-block;
   text-align: left;
-  margin: auto;
 }
 
 .spaced-button {
@@ -40,4 +38,9 @@ html *
   text-align: center;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   background-color: white;
+}
+
+label {
+  font-size: 18px;
+  display: inline;
 }

@@ -39,6 +39,7 @@
         {% if error_message %}
           <p><strong>{{ error_message }}</strong></p>
         {% endif %}
+        </br>
 
         <div id="choices-container">
           <form action="{% url 'polls:vote' question.id %}" method="post">
@@ -50,7 +51,7 @@
                 <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}">{{ choice.choice_text }}</i>
               {% endif %}
               <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-              </label>
+              </label></br></br>
             {% endfor %}
         </div>
       </div> <!-- /container -->
