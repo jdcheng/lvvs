@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 <head>
   <title>Comp435: Election Systems Project</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +40,8 @@
       <br>
       <br>
 
-      <form id = "start" action="136" onsubmit="return validate_user_id()" method="get">
+      <form id = "start" action="{% url 'polls:welcome' %}" onsubmit="return validate_user_id()" method="post">
+        {% csrf_token %}
         <input type="submit" class="btn btn-large btn-success" id="start_button" value="Start"/>
       </form>
 

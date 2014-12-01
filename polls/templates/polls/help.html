@@ -1,0 +1,56 @@
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{{ STATIC_URL }}website_static/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}website_static/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <link href="{{ STATIC_URL }}website_static/css/help.css" rel="stylesheet" type="text/css" title="main" media="screen" />
+    <link href="{{ STATIC_URL }}website_static/css/sticky_footer.css" rel="stylesheet" type="text/css" title="main" media="screen" />
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="{{ STATIC_URL }}website_static/js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}website_static/js/bootstrap-transition.js"></script>
+  </head>
+  
+  <body>
+
+    <!-- Part 1: Wrap all page content here -->
+    <div id="wrap">
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div id="container" class="container-fluid">
+            <span class="stretch"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h1>How to vote</h1>
+        <br>
+        <p>
+          <b>To vote for the candidate of your choice,</b> click that person's name or the circle next to the name.
+          <br>
+          <br>
+          <b>If you want to change your vote or if you make a mistake,</b> first touch the choice you no longer want to deselect that choice. Then touch the choice you want.
+          <br>
+          <br>
+          <b>You do not have to vote in every race.</b> Your ballot will still be counted even if you do not vote in every race.
+        </p>
+      </div> <!-- /container -->
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div id="container" class="container-fluid">
+        <div class="spaced-button"></div>
+        <div class="spaced-button">
+          <form id="next" action="136" method="get">
+            <input type="submit" class="btn btn-large btn-success" id="start_button" value="Next"/>
+          </form>
+        </div>
+        <span class="stretch"></span>
+      </div>
+    </div>
+  </body>
+</html>

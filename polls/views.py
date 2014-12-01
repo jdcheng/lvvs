@@ -198,13 +198,14 @@ def back(request, question_id):
 
 def toballot(request):
     #p = get_object_or_404(Question, pk=question_id)
-    print request.session['current_question_id']
     if request.session['current_question_id'] is not None:
         return HttpResponseRedirect(reverse('polls:detail', args=(request.session['current_question_id'],)))
     else:
         return HttpResponseRedirect('polls/welcome.html')
 
 def welcome(request):
+    if request.method == 'POST':
+        return render(request, 'polls/help.html')
     return render(request, 'polls/welcome.html')
 
 def options(request, question_id):
