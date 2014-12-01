@@ -27,9 +27,40 @@
                     <input type="submit" class="btn btn-large" id="options" value="Settings"/>
                   </form>
                 </div> 
-                <div class="spaced-button"><a class="btn btn-large" href="#">Help</a></div> 
+                <div class="spaced-button">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-large" data-toggle="modal" data-target="#myModal">
+                    Help
+                  </button>
+                </div> 
                 <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:review'%}">Review</a></div> 
                 <span class="stretch"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+              <h4 class="modal-title" id="myModalLabel">Help</h4>
+            </div>
+            <div class="modal-body">
+              <p>
+                <b>To vote for the candidate of your choice,</b> click that person's name or the circle next to the name.
+                <br>
+                <br>
+                <b>If you want to change your vote or if you make a mistake,</b> first touch the choice you no longer want to deselect that choice. Then touch the choice you want.
+                <br>
+                <br>
+                <b>You do not have to vote in every race.</b> Your ballot will still be counted even if you do not vote in every race.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
           </div>
         </div>
       </div>
