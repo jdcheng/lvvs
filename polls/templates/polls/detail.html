@@ -84,36 +84,30 @@
               <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
               </label></br></br>
             <script>
-
-      $("input[name='choice']").change(function(){
-
-      if ($("input[name='choice']:checked")) {
-        sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
-                //alert("test2");
-        var $id = $('input[type=radio]:checked').attr('id');
-        //alert($id)
-        var $name = $('label[for = ' + $id + ' ]').attr("name");
-        //alert($name)
-        var $party = $('label[for = ' + $id + ' ]').attr("party");
-        //alert($party)
-        sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
-        sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);
-      }
-
-    });
-
-      </script>
-            {% endfor %}
+              $("input[name='choice']").change(function(){
+                if ($("input[name='choice']:checked")) {
+                  sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
+                  var $id = $('input[type=radio]:checked').attr('id');
+                  //alert($id)
+                  var $name = $('label[for = ' + $id + ' ]').attr("name");
+                  //alert($name)
+                  var $party = $('label[for = ' + $id + ' ]').attr("party");
+                  //alert($party)
+                  sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
+                  sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);
+                }
+              });
+            </script>
+          {% endfor %}
         </div>
-            <script>
-    $(document).ready(function(){
-
-    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
-      $("input[value="+sessionStorage.getItem('remember_choice_for_{{ question.id }}')+"]").prop("checked", true);
-    };
-    });
-
-    </script>
+            
+        <script>
+          $(document).ready(function(){
+            if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
+              $("input[value="+sessionStorage.getItem('remember_choice_for_{{ question.id }}')+"]").prop("checked", true);
+            };
+          });
+        </script>
       </div> <!-- /container -->
       <div id="push"></div>
     </div>
