@@ -32,22 +32,7 @@
                   <button type="button" class="btn btn-large" data-toggle="modal" data-target="#myModal">
                     Help
                   </button>
-                </div> 
-                <div class="spaced-button"><a class="btn btn-large" id ="deselect2">Deselect Choice</a>
-                <script>
-                $(document).ready(function(){
-                    $("#deselect2").click(function(event){
-      $('input[type=radio]').prop("disabled", false);
-      if ($("input[name='choice']:checked").val()) {
-        $('input[type=radio]:checked').prop("checked", false);
-        sessionStorage.setItem("remember_choice_for_{{ question.id }}", null);
-        sessionStorage.setItem("remember_name_for_{{ question.id }}", "No selection for this race");
-        sessionStorage.setItem("remember_party_for_{{ question.id }}", " ");
-      }
-    });
-                });
-                </script>
-                </div> 
+                </div>
                 <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:review'%}">Review</a></div> 
                 <span class="stretch"></span>
           </div>
@@ -144,28 +129,10 @@
         {% endif %}
 
         <div class="spaced-button">
-          <script>
+          <a class="btn btn-large" id ="deselect2">Deselect Choice</a>
+        </div>
 
-      /*$(document).ready(function(){
-
-      $("#vote").click(function(event){
-      if ($("input[name='choice']:checked").val()) {
-        sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
-                //alert("test2");
-        var $id = $('input[type=radio]:checked').attr('id');
-        //alert($id)
-        var $name = $('label[for = ' + $id + ' ]').attr("name");
-        //alert($name)
-        var $party = $('label[for = ' + $id + ' ]').attr("party");
-        //alert($party)
-        sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
-        sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);
-      }
-      });
-
-    }); */
-
-      </script>
+        <div class="spaced-button">
           <input type="submit" id="vote" class="btn btn-large btn-success" value="Next" />
         </div>
         </form>

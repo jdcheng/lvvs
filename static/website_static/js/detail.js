@@ -43,12 +43,13 @@ $(document).ready(function() {
         $(this).unbind("click").click();
     });
 
-    $("#deselect").click(function(event) {
+    $("#deselect2").click(function(event){
         $('input[type=radio]').prop("disabled", false);
         if ($("input[name='choice']:checked").val()) {
             $('input[type=radio]:checked').prop("checked", false);
             sessionStorage.setItem("remember_choice_for_{{ question.id }}", null);
+            sessionStorage.setItem("remember_name_for_{{ question.id }}", "No selection for this race");
+            sessionStorage.setItem("remember_party_for_{{ question.id }}", " ");
         }
     });
-
 });
