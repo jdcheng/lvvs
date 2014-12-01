@@ -1,14 +1,4 @@
-input[type = radio] { 
-  size: 12;
-  margin: 1em 1em 1em 10em; 
-  width: 3em;
-  height: 3em;
-  transform: scale(3, 3); 
-  -moz-transform: scale(3, 3); 
-  -ms-transform: scale(3, 3); 
-  -webkit-transform: scale(3, 3); 
-  -o-transform: scale(3, 3); 
-}
+
 
 html *
 {
@@ -40,7 +30,6 @@ html *
   width: 80%;
 
   padding: 20px;
-  padding-top: 120px; /* 60px to make the container go all the way to the bottom of the topbar */
   text-align: center;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   background-color: white;

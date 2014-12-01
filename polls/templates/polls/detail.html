@@ -42,14 +42,13 @@
         <form action="{% url 'polls:vote' question.id %}" method="post">
           {% csrf_token %}
           {% for choice in question.choice_set.all %}
-            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
             {% if choice.party_description != ' ' %}
-              <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "72px">{{ choice.choice_text }} - <i>{{ choice.party_description }}</font></i> 
-            </label><br />
+              <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</i> 
             {% else %}
-              <label for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}"><font size = "72px">{{ choice.choice_text }}</font></i> 
-            </label><br /><br />
-          {% endif %}
+              <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}">{{ choice.choice_text }}</i>
+            {% endif %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+            </label>
           {% endfor %}
       </div> <!-- /container -->
       <div id="push"></div>
