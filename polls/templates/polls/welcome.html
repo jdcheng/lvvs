@@ -25,8 +25,6 @@
       <div class="navbar-inner">
         <div id="container" class="container-fluid">
           <div class="spaced-button"><a class="btn btn-large" href="#">Settings</a></div> 
-          <div class="spaced-button"><a class="btn btn-large" href="#">Help</a></div> 
-          <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:review'%}">Review</a></div> 
           <span class="stretch"></span>
         </div>
       </div>
@@ -39,18 +37,19 @@
 
       <h1 style="display:inline-block">User ID: </h1><input type="text" class="input-small" style="height:38.5px; margin-left: 10px" placeholder="User ID" id="user_id" ></input>
 
+      <br>
+      <br>
+
+      <form id = "start" action="136" onsubmit="return validate_user_id()" method="get">
+        <input type="submit" class="btn btn-large btn-success" id="start_button" value="Start"/>
+      </form>
+
     </div> <!-- /container -->
     <div id="push"></div>
   </div>
 
   <div id="footer">
     <div id="container" class="container-fluid">
-      <div class="spaced-button"></div>
-      <div class="spaced-button">
-        <form id = "start" action="136" onsubmit="return validate_user_id()" method="get">
-          <input type="submit" class="btn btn-large" id="start_button" value="Start"/>
-        </form>
-      </div> 
       <span class="stretch"></span>
     </div>
   </div>
