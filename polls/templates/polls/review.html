@@ -53,12 +53,8 @@
                   party = sessionStorage.getItem("remember_party_for_{{ question.id }}"); 
                 }
               }
-              // $("label[id = label{{ question.id }}]").text($("label[id = label{{ question.id }}]").text + name + party);
+              
               $("#text{{question.id}}").text(name + party);
-              // alert($("#label{{ question.id }}").text);
-              // var myLabel = document.getElementById("label[id = label{{ question.id }}]");
-              // myLabel.innerHTML = name + party + myLabel.innerHTML;
-
 
               //$("label[id = label{{ question.id }}]").css('fontWeight', 'bold');
               $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
