@@ -23,8 +23,13 @@ $(document).ready(function() {
     //$("body").css('text-weight', sessionStorage.getItem('boldness')) 
 
     if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
+        console.log(sessionStorage.getItem("remember_choice_for_{{ question.id }}"));
         $("input[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").prop("checked", true);
     };
+
+    if ($("input[name='choice']:checked").val()) {
+       $("input[name='choice']:radio").attr('disabled', true);
+    }
 
     $("#vote").click(function(event) {
         event.preventDefault();
