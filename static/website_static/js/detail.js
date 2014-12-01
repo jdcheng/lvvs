@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
     if (sessionStorage.getItem('color') != 'null') {
-        $("body").css('color', sessionStorage.getItem('color'));
+        $(".container").css('color', sessionStorage.getItem('color'));
     }
 
-    if (sessionStorage.getItem('background-color-color') != 'null') {
-        $("body").css('background-color', sessionStorage.getItem('background-color'));
+    if (sessionStorage.getItem('background-color') != 'null') {
+        $(".container").css('background-color', sessionStorage.getItem('background-color'));
     }
 
     // alert("" + sessionStorage.getItem('size') + "")
