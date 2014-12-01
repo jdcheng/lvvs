@@ -39,17 +39,20 @@
         {% if error_message %}
           <p><strong>{{ error_message }}</strong></p>
         {% endif %}
-        <form action="{% url 'polls:vote' question.id %}" method="post">
-          {% csrf_token %}
-          {% for choice in question.choice_set.all %}
-            {% if choice.party_description != ' ' %}
-              <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</i> 
-            {% else %}
-              <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}">{{ choice.choice_text }}</i>
-            {% endif %}
-            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-            </label>
-          {% endfor %}
+
+        <div id="choices-container">
+          <form action="{% url 'polls:vote' question.id %}" method="post">
+            {% csrf_token %}
+            {% for choice in question.choice_set.all %}
+              {% if choice.party_description != ' ' %}
+                <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</i> 
+              {% else %}
+                <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}">{{ choice.choice_text }}</i>
+              {% endif %}
+              <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+              </label>
+            {% endfor %}
+        </div>
       </div> <!-- /container -->
       <div id="push"></div>
     </div>

@@ -6,16 +6,23 @@ html *
 }
 
 .stretch {
-    width: 100%;
-    display: inline-block;
-    font-size: 0;
-    line-height: 0
+  width: 100%;
+  display: inline-block;
+  font-size: 0;
+  line-height: 0
 }
 
 #container {
-    text-align: justify;
-    -ms-text-justify: distribute-all-lines;
-    text-justify: distribute-all-lines;
+  text-align: justify;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+}
+
+#choices-container {
+  
+  width: 60%;
+  text-align: left;
+  margin: auto;
 }
 
 .spaced-button {
