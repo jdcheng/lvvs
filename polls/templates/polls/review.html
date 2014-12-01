@@ -38,38 +38,38 @@
           {% for question in question_list %}
           <script>
             $(document).ready(function(){
-            $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
-            
-            if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null){
-              choice = "No selection for this race";
-              name = "No selection for this race";
-              party = "";
-            }
-            else{
-              choice = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
-              name = sessionStorage.getItem("remember_name_for_{{ question.id }}");
-              console.log(name);
-              if (sessionStorage.getItem("remember_party_for_{{ question.id }}") != ' ') {
-                party = " - " + sessionStorage.getItem("remember_party_for_{{ question.id }}");
+              $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
+              
+              if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null){
+                choice = "No selection for this race";
+                name = "No selection for this race";
+                party = "";
               }
-              else {
-                party = sessionStorage.getItem("remember_party_for_{{ question.id }}"); 
+              else{
+                choice = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
+                name = sessionStorage.getItem("remember_name_for_{{ question.id }}");
+                console.log(name);
+                if (sessionStorage.getItem("remember_party_for_{{ question.id }}") != ' ') {
+                  party = " - " + sessionStorage.getItem("remember_party_for_{{ question.id }}");
+                }
+                else {
+                  party = sessionStorage.getItem("remember_party_for_{{ question.id }}"); 
+                }
               }
-            }
-            $("label[id = label{{ question.id }}]").text(name + party);
-            $("label[id = label{{ question.id }}]").css('fontWeight', 'bold');
-            $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
-            $("p[id= question_text_{{ question.id }}]").css('fontWeight', 'bold');
-            
-            
-            //if (choice == "No selection for this race"){
-            //  $("p[id= question_text_{{ question.id }}]").css('fontWeight', 700);
-            //}
-            
-            if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
-              $("div[id = {{ question.id }}]").attr("id", sessionStorage.getItem("remember_choice_for_{{ question.id }}"));
-            }
-            //alert("check")
+              $("label[id = label{{ question.id }}]").text(name + party);
+              $("label[id = label{{ question.id }}]").css('fontWeight', 'bold');
+              $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
+              $("p[id= question_text_{{ question.id }}]").css('fontWeight', 'bold');
+              
+              
+              //if (choice == "No selection for this race"){
+              //  $("p[id= question_text_{{ question.id }}]").css('fontWeight', 700);
+              //}
+              
+              if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
+                $("div[id = {{ question.id }}]").attr("id", sessionStorage.getItem("remember_choice_for_{{ question.id }}"));
+              }
+              //alert("check")
             
             });
           </script>
@@ -97,7 +97,7 @@
       <div id="container" class="container-fluid">
         <div class="spaced-button"></div>
 
-        <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:survey' %}">Submit</a></div> 
+        <div class="spaced-button"><a class="btn btn-large btn-success" href="{% url 'polls:survey' %}">Submit</a></div> 
 
         <span class="stretch"></span>
       </div>

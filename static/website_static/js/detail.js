@@ -27,18 +27,20 @@ $(document).ready(function() {
     };
 
     $("#vote").click(function(event) {
+        event.preventDefault();
         if ($("input[name='choice']:checked").val()) {
             sessionStorage.setItem("remember_choice_for_{{ question.id }}", $('input[type=radio]:checked').val());
             var $id = $('input[type=radio]:checked').attr('id');
-            //alert($id)
+            // alert($id)
             var $name = $('label[for = ' + $id + ' ]').attr("name");
             // alert($name)
             var $party = $('label[for = ' + $id + ' ]').attr("party");
             // alert($party)
             $('input[type=radio]').prop("disabled", true);
             sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
-            sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);;
+            sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);
         }
+        $(this).unbind("click").click();
     });
 
     $("#deselect").click(function(event) {

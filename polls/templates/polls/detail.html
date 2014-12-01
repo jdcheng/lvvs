@@ -92,7 +92,9 @@
     <div id="footer">
       <div id="container" class="container-fluid">
         {% if question.id|add:"0" != 136 %}  
-          <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:vote_previous' question.id %}">Previous</a></div> 
+          <div class="spaced-button">
+            <a class="btn btn-large" href="{% url 'polls:vote_previous' question.id %}">Previous</a>
+          </div>
         {% else %}
           <div class="spaced-button"></div>
         {% endif %}
