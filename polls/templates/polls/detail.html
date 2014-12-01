@@ -37,13 +37,12 @@
                 <script>
                 $(document).ready(function(){
                     $("#deselect2").click(function(event){
-                      alert("hifirst")
       $('input[type=radio]').prop("disabled", false);
       if ($("input[name='choice']:checked").val()) {
         $('input[type=radio]:checked').prop("checked", false);
-        alert("hi")
         sessionStorage.setItem("remember_choice_for_{{ question.id }}", null);
-        alert("hicheck")
+        sessionStorage.setItem("remember_name_for_{{ question.id }}", "No selection for this race");
+        sessionStorage.setItem("remember_party_for_{{ question.id }}", " ");
       }
     });
                 });
