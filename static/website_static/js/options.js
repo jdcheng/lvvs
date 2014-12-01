@@ -19,7 +19,13 @@ $(document).ready(function() {
     if (sessionStorage.getItem('background-color') == null) {
         sessionStorage.setItem('background-color', 'white');
     } else {
-        $(".container").css('background-color', sessionStorage.getItem('background-color'));
+        if (sessionStorage.getItem('background-color') == 'white') {
+            $(".container").css('background-color', 'white');
+            $(".hero-unit").css('background-color', '#eeeeee');
+        } else {
+            $(".container").css('background-color', 'black');
+            $(".hero-unit").css('background-color', '#111111');
+        }
     }
 
     if (sessionStorage.getItem("boldness") != null) {
@@ -87,10 +93,12 @@ $(document).ready(function() {
         if (sessionStorage.getItem('background-color') == 'white') {
             // $("body").css('background-color', 'black');
             $(".container").css('background-color', 'black');
+            $(".hero-unit").css('background-color', '#111111');
             sessionStorage.setItem('background-color', 'black');
         } else {
             // $("body").css('background-color', 'white');
             $(".container").css('background-color', 'white');
+            $(".hero-unit").css('background-color', '#eeeeee');
             sessionStorage.setItem('background-color', 'white');
         }
     });
