@@ -23,6 +23,11 @@ html *
     margin: 5px;
 }
 
+#choices-container {
+  display: inline-block;
+  text-align: left;
+}
+
 .container {
   left: 50%;
   top: 50%;
