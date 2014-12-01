@@ -105,6 +105,15 @@
       </script>
             {% endfor %}
         </div>
+            <script>
+    $(document).ready(function(){
+
+    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
+      $("input[value="+sessionStorage.getItem('remember_choice_for_{{ question.id }}')+"]").prop("checked", true);
+    };
+    });
+
+    </script>
       </div> <!-- /container -->
       <div id="push"></div>
     </div>
