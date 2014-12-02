@@ -1,5 +1,6 @@
 import csv
 import time
+import os
 from django import forms
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
@@ -117,7 +118,7 @@ class ResultsView(generic.DetailView):
 def get_new_survey(request):
     if request.method == 'POST':
         form = NewSurvey(request.POST)
-        filename = 'survey' + '_' + time.strftime("%d_%m_%Y") + '_' + time.strftime("%H%M%S") + '.csv'
+        filename = request.session['user_id'] + '/survey.csv'
         if form.is_valid():
             with open(filename, 'wb') as csvfile:
                 votewriter = csv.writer(csvfile, delimiter=',')
@@ -213,7 +214,11 @@ def help(request):
 
 def options_initial(request):
     if request.method == 'POST':
-        user_id = request.POST.get("user_id")
+        # create user folder
+        user_id = str(request.POST.get("user_id"))
+        if not os.path.exists(user_id):
+            os.makedirs(user_id)
+        request.session['user_id'] = user_id
         return render(request, 'polls/options_initial.html')
         #return render(request, 'polls/help.html')
     return render(request, 'polls/welcome.html')
