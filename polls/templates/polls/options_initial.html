@@ -1,0 +1,107 @@
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{{ STATIC_URL }}website_static/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}website_static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}website_static/css/slider.css" rel="stylesheet">
+
+    <link href="{{ STATIC_URL }}website_static/css/options.css" rel="stylesheet" type="text/css" title="main" media="screen" />
+    <link href="{{ STATIC_URL }}website_static/css/sticky_footer.css" rel="stylesheet" type="text/css" title="main" media="screen" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="{{ STATIC_URL }}website_static/js/bootstrap.min.js"></script>
+    <script src="{{ STATIC_URL }}website_static/js/options.js"></script>
+    <script src="{{ STATIC_URL }}website_static/js/bootstrap-transition.js"></script>
+    <script src="{{ STATIC_URL }}website_static/js/bootstrap-slider.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Part 1: Wrap all page content here -->
+    <div id="wrap">
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div id="container" class="container-fluid">  
+            <span class="stretch"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <h1>Ballot Accessibility Options</h1>
+        <b>Please adjust the following settings as you see fit.</b>
+        <br>
+
+        <div class="hero-unit">
+          <p>
+            <font size = 72>
+            <txt name= "sample">Sample Ballot Question</txt>
+            </font>
+          </p>
+          <p>
+            <font size= 48>
+              <txt name= "sample">Justice of the Peace, Precinct 2, Place 2</txt>
+            </font>
+          </p>
+          <div id="choices-container">
+            <label class="radio">
+              <txt name= "sample">George E. Risner - <i>Democratic Party</i></txt>
+              <input type="radio" name="choice" value="choice" />
+            </label>
+          </div>
+        </div>
+
+        <h2> Text Size </h2>
+
+        <input id="sizeSlider" data-slider-id='sizeSlider' type="text" data-slider-min="18" data-slider-max="72" data-slider-step="2" data-slider-value="18"/>
+        <br>
+        <br>
+
+        <input id="size" class="btn btn-large" type="button"/>
+        <input id = "applySize" type="submit" class="btn btn-large" value="Apply Changes" />
+
+        <br>
+
+        <h2> Text Boldness </h2>
+        <div id="choices-container">
+          <form>
+            <label class="radio">
+              Normal
+              <input name = "boldSelect" id = "normal" type="radio" />
+            </label>
+            <br>
+            <label class="radio">
+              <b>Bold</b>
+              <input name = "boldSelect" id = "bold" type="radio" />
+            </label>
+          </form>
+          <br>
+        </div>
+        <br>
+        <input id = "applyBold" type="submit" class="btn btn-large" value="Apply Changes" />
+
+        <br>
+
+        <h2> Invert Color</h2>
+        <button id="invert" type="button" class="btn btn-large">Invert Color</button>
+        
+      </div> <!-- /container -->
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div id="container" class="container-fluid">
+        <div class="spaced-button"></div>
+        <div class="spaced-button">
+          <form id="next" action="{% url 'polls:options_initial' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-large btn-success" id="start_button" value="Next"/>
+          </form>
+        </div>
+        <span class="stretch"></span>
+      </div>
+    </div>
+  </body>
+</html>

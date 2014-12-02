@@ -205,6 +205,11 @@ def toballot(request):
 
 def welcome(request):
     if request.method == 'POST':
+        return render(request, 'polls/options_initial.html')
+    return render(request, 'polls/welcome.html')
+
+def options_initial(request):
+    if request.method == 'POST':
         return render(request, 'polls/help.html')
     return render(request, 'polls/welcome.html')
 

@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^options/submit/$', views.submit_options, name='submit_options'),
     url(r'^(?P<question_id>\d+)/options/$', views.options, name='options'),
     url(r'^newsurvey/$', views.get_new_survey, name='new_survey'),
+    url(r'^$', views.options_initial, name='options_initial'),
     url(r'^$', views.welcome, name='welcome'),
 )
