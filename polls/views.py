@@ -201,7 +201,7 @@ def toballot(request):
     if request.session['current_question_id'] is not None:
         return HttpResponseRedirect(reverse('polls:detail', args=(request.session['current_question_id'],)))
     else:
-        return HttpResponseRedirect('polls/welcome.html')
+        return HttpResponseRedirect('polls/136')
 
 def welcome(request):
     if request.method == 'POST':
