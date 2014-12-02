@@ -16,6 +16,21 @@
   
   <body>
 
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', '{{ STATIC_URL }}website_static/m4a/{{question.id}}.m4a');
+        $.get();
+            audioElement.addEventListener("load", function() {
+        }, true);
+
+        $('#play').click(function() {
+            audioElement.load();
+            audioElement.play();
+        });
+      });
+    </script>
+
     <!-- Part 1: Wrap all page content here -->
     <div id="wrap">
       <div class="navbar navbar-inverse navbar-fixed-top">
@@ -66,7 +81,7 @@
       </div>
 
       <div id="ballot-container" class="container">
-        <h1><font size = "{{titleSize}}">{{ question.question_text }}</font></h1>
+        <h1 id="play"><font size = "{{titleSize}}">{{ question.question_text }}</font></h1>
         {% if error_message %}
           <p><strong>{{ error_message }}</strong></p>
         {% endif %}

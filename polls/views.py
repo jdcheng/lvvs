@@ -136,7 +136,6 @@ def survey(request):
 
 all_questions = {}
 def vote(request, question_id):
-    print question_id
     p = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = p.choice_set.get(pk=request.POST['choice'])
