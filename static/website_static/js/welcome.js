@@ -97,5 +97,7 @@ function validate_user_id() {
         alert("Please enter your user id");
         document.getElementById("user_id").style.backgroundColor = "FF9494";
         return false;
+    } else {
+        $("input[name=user_id]").val(x);
     }
 }

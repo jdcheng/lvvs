@@ -213,6 +213,7 @@ def help(request):
 
 def options_initial(request):
     if request.method == 'POST':
+        user_id = request.POST.get("user_id")
         return render(request, 'polls/options_initial.html')
         #return render(request, 'polls/help.html')
     return render(request, 'polls/welcome.html')

@@ -41,6 +41,7 @@
 
       <form id = "start" action="{% url 'polls:welcome' %}" onsubmit="return validate_user_id()" method="post">
         {% csrf_token %}
+        <input type="hidden" name="user_id"/>
         <input type="submit" class="btn btn-large btn-success" id="start_button" value="Start"/>
       </form>
 
