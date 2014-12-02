@@ -8,19 +8,13 @@ $(document).ready(function() {
         $(".container").css('background-color', sessionStorage.getItem('background-color'));
     }
 
-    // alert("" + sessionStorage.getItem('size') + "")
-
     if (sessionStorage.getItem('size') != 'null') {
         $("#ballot-container *").css('font-size', sessionStorage.getItem('size') + "px")
     }
 
-    //alert("" + sessionStorage.getItem('boldness') + "")
-
     if (sessionStorage.getItem('boldness') != 'null') {
         $("#ballot-container *").css('fontWeight', sessionStorage.getItem('boldness'))
     }
-
-    //$("body").css('text-weight', sessionStorage.getItem('boldness')) 
 
     if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
         $("input[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").prop("checked", true);
