@@ -28,6 +28,24 @@ html *
   margin: 5px;
 }
 
+#id_which_features_used {
+  font-size:30px; 
+    width: 3000px;
+    height: 200px;
+    padding: 3px;
+    border: 0;
+    margin:0;
+}
+
+textarea {
+  font-size:30px; 
+    width: 3000px;
+    height: 200px;
+    padding: 3px;
+    border: 0;
+    margin:0;
+}
+
 .container {
   left: 50%;
   width: 80%;

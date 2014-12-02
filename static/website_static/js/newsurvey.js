@@ -7,9 +7,9 @@ $(document).ready(function(){
         $(".container").css('background-color', sessionStorage.getItem('background-color'));
     }
 
-    if (sessionStorage.getItem('size') != 'null') {
-        $("#ballot-container *").css('font-size', sessionStorage.getItem('size') + "px")
-    }
+    //if (sessionStorage.getItem('size') != 'null') {
+    //    $("#ballot-container *").css('font-size', sessionStorage.getItem('size') + "px")
+    ''}
 
     if (sessionStorage.getItem('boldness') != 'null') {
         $("#ballot-container *").css('fontWeight', sessionStorage.getItem('boldness'))
