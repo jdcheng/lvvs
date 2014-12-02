@@ -18,4 +18,6 @@ $(document).ready(function(){
     if (sessionStorage.getItem('boldness') != 'null'){
       $("body").css('fontWeight', sessionStorage.getItem('boldness'))
     }
+
+    $("#ballot-container *").css('line-height', "1.125em");
 });

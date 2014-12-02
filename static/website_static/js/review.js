@@ -20,4 +20,6 @@ $(document).ready(function(){
     if (sessionStorage.getItem('size') != 'null'){
       $(".container").css('fontSize', sessionStorage.getItem('size') + "px")
     }
+
+    $("#ballot-container *").css('line-height', "1.125em");
 });

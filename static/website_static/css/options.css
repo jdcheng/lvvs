@@ -23,9 +23,9 @@ html *
 
 .spaced-button {
   vertical-align: top;
-    display: inline-block;
-    *display: inline;
-    margin: 5px;
+  display: inline-block;
+  *display: inline;
+  margin: 5px;
 }
 
 .container {

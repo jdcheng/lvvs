@@ -30,6 +30,8 @@ $(document).ready(function() {
        $("input[name='choice']:radio").attr('disabled', true);
     }
 
+    $("#ballot-container *").css('line-height', "1.125em");
+
     $("#vote").click(function(event) {
         event.preventDefault();
         if ($("input[name='choice']:checked").val()) {
