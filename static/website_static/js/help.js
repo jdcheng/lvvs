@@ -21,5 +21,5 @@ $(document).ready(function(){
       $(".container").css('fontSize', sessionStorage.getItem('size') + "px")
     }
 
-    $("#ballot-container *").css('line-height', "1.125em");
+    $("#ballot-container *").css('line-height', "1.25em");
 });

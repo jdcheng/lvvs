@@ -67,7 +67,7 @@ $(document).ready(function() {
         sessionStorage.setItem('size', $("#size").val());
         $("txt[name=sample]").animate({
             "font-size": $("#size").val() + "px",
-            "line-height": "1.125em"
+            "line-height": "1.25em"
         });
     });
 
