@@ -36,12 +36,12 @@
 
         <div class="hero-unit">
           <p>
-            <font size = 72>
+            <font size = 18>
             <txt name= "sample">Sample Ballot Question</txt>
             </font>
           </p>
           <p>
-            <font size= 48>
+            <font size= 18>
               <txt name= "sample">Justice of the Peace, Precinct 2, Place 2</txt>
             </font>
           </p>
@@ -95,7 +95,7 @@
       <div id="container" class="container-fluid">
         <div class="spaced-button"></div>
         <div class="spaced-button">
-          <form id="next" action="{% url 'polls:options_initial' %}" method="post">
+          <form id="next" action="{% url 'polls:help' %}" method="post">
             {% csrf_token %}
             <input type="submit" class="btn btn-large btn-success" id="start_button" value="Next"/>
           </form>

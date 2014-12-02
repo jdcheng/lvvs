@@ -52,9 +52,9 @@
           </form>
         </div>
         <div class="spaced-button">
-          <form action="{% url 'polls:options' %}" method="post">
+          <form action="{% url 'polls:toballot' %}" method="post">
             {% csrf_token %}
-              <input type="submit" class="btn btn-large" id="options" value="Next"/>
+              <input type="submit" class="btn btn-large" id="ballot" value="Next"/>
           </form>
           <!-- <form id="next" action="136" method="get">
             <input type="submit" class="btn btn-large btn-success" id="start_button" value="Next"/>
