@@ -93,7 +93,12 @@
     <div id="footer">
       <div id="container" class="container-fluid">
         <div class="spaced-button"></div>
-        <div class="spaced-button"><a class="btn btn-large" href="{% url 'polls:review'%}">Back to Ballot Review</a></div>
+        <div class="spaced-button">
+          <form id = "ballot" action="{% url 'polls:toballot' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" id="ballot" class="btn btn-large btn-success" value="Back to Ballot Review" />
+          </form>
+        </div>
         <span class="stretch"></span>
       </div>
     </div>
