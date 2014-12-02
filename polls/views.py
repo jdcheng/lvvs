@@ -97,7 +97,7 @@ class NewSurvey(forms.Form):
     straight_party = forms.ChoiceField(required = False, label="19. Do you typically vote a straight-party ticket?", choices=YES, widget=forms.RadioSelect())
     every_office = forms.ChoiceField(required = False, label="20. Do you typically cast a vote for every office on the ballot?", choices=YES, widget=forms.RadioSelect())
     unsure_cast = forms.ChoiceField(required = False, label="21. When you voted in an election, have you ever been unsure if your vote was cast correctly or would be counted?", choices=YES, widget=forms.RadioSelect())
-    describe = forms.CharField(required = False, label=mark_safe("If yes, please describe the situation:"), max_length = 1000, widget=forms.Textarea(attrs= {'style': 'width: 50em;'}))
+    describe = forms.CharField(required = False, label=mark_safe("If yes, please describe the situation:"), max_length = 1000, widget=forms.Textarea(attrs= {'style': 'width: 30em;'}))
     satisfied_overall = forms.ChoiceField(required = False, label="22. On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your past voting experiences overall?", choices=[(x, x) for x in range(1, 11)])
     occupation = forms.CharField(required=False, label='23. What is your current occupation?', max_length = 100)
     education = forms.ChoiceField(required=False, label="24. Please indicate the highest level of education you have completed.", choices=EDUCATION, widget=forms.RadioSelect())
@@ -107,9 +107,9 @@ class NewSurvey(forms.Form):
     other_race = forms.CharField(required=False, label='Other', max_length = 100)
     income = forms.ChoiceField(required=False, label="26. Which of the following income ranges best describes your yearly wages?", choices=INCOME, widget=forms.RadioSelect())
     satisfied_system = forms.ChoiceField(required = False, label="28. On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your experience using our voting system?", choices=[(x, x) for x in range(1, 11)])
-    which_features_used = forms.CharField(required = False, label=mark_safe("29. Which accessibility features did you use?"), widget=forms.Textarea(attrs= {'style': 'width: 50em;'}))
-    which_features_helpful = forms.CharField(required = False, label=mark_safe("30. Which accessibility features did you find most helpful?"), max_length = 1000, widget=forms.Textarea(attrs= {'style': 'width: 50em;'}))
-    improvements = forms.CharField(required = False, label=mark_safe("31. What improvements would you suggest for this voting system?"), max_length = 1000, widget=forms.Textarea(attrs= {'style': 'width: 50em;'}))
+    which_features_used = forms.CharField(required = False, label=mark_safe("29. Which accessibility features did you use?"), widget=forms.Textarea(attrs= {'style': 'width: 30em;'}))
+    which_features_helpful = forms.CharField(required = False, label=mark_safe("30. Which accessibility features did you find most helpful?"), max_length = 1000, widget=forms.Textarea(attrs= {'style': 'width: 30em;'}))
+    improvements = forms.CharField(required = False, label=mark_safe("31. What improvements would you suggest for this voting system?"), max_length = 1000, widget=forms.Textarea(attrs= {'style': 'width: 30em;'}))
 
 class ResultsView(generic.DetailView):
     model = Question
