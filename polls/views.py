@@ -116,10 +116,16 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 def get_new_survey(request):
-    # record time in time.txt file
     if "end_time" in request.POST and os.path.exists(request.session['user_id']):
         form = NewSurvey()
 
+        # record results
+        with open(request.session['user_id'] + '/data.csv', 'wb') as csvfile:
+            for i in xrange(136, 163):
+                votewriter = csv.writer(csvfile, delimiter=',')
+                votewriter.writerow([i] + [request.POST.get(str(i)+"_choice")])
+
+        # record time spent
         time_spent = time.time() - request.session['start_time']
         with open(request.session['user_id'] + '/time.txt', 'w') as text_file:
             text_file.write(str(time_spent))

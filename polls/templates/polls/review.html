@@ -29,44 +29,51 @@
       <div class="container">
         <h1>Review your choices here.</h1>
         <br>
-        {% if question_list %}
-          {% for question in question_list %}
-          <script>
-            $(document).ready(function() {
-              $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
-              
-              if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null) {
-                choice = "No selection for this race";
-                name = "No selection for this race";
-                party = "";
-              }
-              else{
-                choice = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
-                name = sessionStorage.getItem("remember_name_for_{{ question.id }}");
-                if (sessionStorage.getItem("remember_party_for_{{ question.id }}") != ' ') {
-                  party = " - " + sessionStorage.getItem("remember_party_for_{{ question.id }}");
-                }
-                else {
-                  party = sessionStorage.getItem("remember_party_for_{{ question.id }}"); 
-                }
-              }
-              
-              $("#text{{question.id}}").text(name + party);
+        <form id = "start" action="{% url 'polls:survey' %}" method="post">
+          {% csrf_token %}
+          {% if question_list %}
+            {% for question in question_list %}
 
-              //$("label[id = label{{ question.id }}]").css('fontWeight', 'bold');
-              $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
-              $("p[id= question_text_{{ question.id }}]").css('fontWeight', 'bold');
-              
-              
-              //if (choice == "No selection for this race"){
-              //  $("p[id= question_text_{{ question.id }}]").css('fontWeight', 700);
-              //}
-              
-              if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
-                $("div[id = {{ question.id }}]").attr("id", sessionStorage.getItem("remember_choice_for_{{ question.id }}"));
-              }
-            });
-          </script>
+            <script>
+              $(document).ready(function() {
+                $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
+
+                if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") == null) {
+                  choice = "No selection for this race";
+                  name = "No selection for this race";
+                  party = "";
+                }
+                else{
+                  choice = sessionStorage.getItem("remember_choice_for_{{ question.id }}");
+                  name = sessionStorage.getItem("remember_name_for_{{ question.id }}");
+                  if (sessionStorage.getItem("remember_party_for_{{ question.id }}") != ' ') {
+                    party = " - " + sessionStorage.getItem("remember_party_for_{{ question.id }}");
+                  }
+                  else {
+                    party = sessionStorage.getItem("remember_party_for_{{ question.id }}"); 
+                  }
+                }
+                
+                $("#text{{question.id}}").text(name + party);
+
+                //$("label[id = label{{ question.id }}]").css('fontWeight', 'bold');
+                $("p[id= question_text_{{ question.id }}]").text("{{question.question_text}}");
+                $("p[id= question_text_{{ question.id }}]").css('fontWeight', 'bold');
+                
+                
+                //if (choice == "No selection for this race"){
+                //  $("p[id= question_text_{{ question.id }}]").css('fontWeight', 700);
+                //}
+                
+                if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
+                  $("div[id = {{ question.id }}]").attr("id", sessionStorage.getItem("remember_choice_for_{{ question.id }}"));
+                }
+
+                $("input[name={{question.id}}_choice]").val(name+party);
+              });
+            </script>
+
+            <input type="hidden" name="{{question.id}}_choice" value="placeholder"/>
         
         <p id = "question_text_{{ question.id }}">{{ question.question_text }} </p>
         <div id = "{{ question.id }}"></div>
@@ -93,8 +100,6 @@
       <div id="container" class="container-fluid">
         <div class="spaced-button"></div>
         <div class="spaced-button">
-          <form id = "start" action="{% url 'polls:survey' %}" method="post">
-            {% csrf_token %}
             <input type="hidden" name="end_time" value="0"/>
             <input type="submit" class="btn btn-large btn-success" value="Submit"/>
           </form>
