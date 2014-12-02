@@ -21,5 +21,6 @@ urlpatterns = patterns('',
     url(r'^newsurvey/$', views.get_new_survey, name='new_survey'),
     url(r'^help/$', views.help, name='help'),
     url(r'^$', views.options_initial, name='options_initial'),
+    url(r'^survey/options/$', views.options_survey, name='options_survey'),
     url(r'^$', views.welcome, name='welcome'),
 )

@@ -248,6 +248,9 @@ def options(request, question_id):
 def options_base(request):
     return render(request, 'polls/first_settings.html')
 
+def options_survey(request):
+    return render(request, 'polls/options_survey.html')
+
 def options_review(request):
     return render(request, 'polls/review_settings.html')
 
