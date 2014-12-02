@@ -47,13 +47,12 @@ $(document).ready(function() {
     $("#size").val(sizeValue);
 
     $( "#sizeSlider" ).slider({
-        value:250,
-        min: 50,
-        max: 1000,
-        range: "min",
-        step: 50,
+        value:18,
+        min: 18,
+        max: 72,
+        step: 2,
         slide: function( event, ui ) {
-            $("#size").html( ui.value );
+            $("#size").val( ui.value );
         }
     });
 
