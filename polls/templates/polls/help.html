@@ -16,6 +16,19 @@
   
   <body>
 
+  <script type="text/javascript">
+    $(document).ready(function() {
+    var audioElement = document.createElement('audio');
+    audioElement.setAttribute('src', '{{ STATIC_URL }}website_static/m4a/help.m4a');
+    $.get();
+        audioElement.addEventListener("load", function() {
+    }, true);
+
+    audioElement.load();
+    audioElement.play();
+      });
+    </script>
+
     <!-- Part 1: Wrap all page content here -->
     <div id="wrap">
       <div class="navbar navbar-inverse navbar-fixed-top">
