@@ -214,10 +214,11 @@ def toballot(request):
     #p = get_object_or_404(Question, pk=question_id)
     if "start_time" in request.POST:
         request.session['start_time'] = time.time()
+
     if request.session['current_question_id'] is not None:
-        return HttpResponseRedirect(reverse('polls:detail', args=(request.session['current_question_id'],)))
-    else:
-        return HttpResponseRedirect('polls/136')
+            return HttpResponseRedirect(reverse('polls:detail', args=(request.session['current_question_id'],)))
+
+    return render(request, 'polls/welcome.html')
 
 def welcome(request):
     if request.method == 'POST':
@@ -229,6 +230,7 @@ def help(request):
     return render(request, 'polls/help.html')
 
 def options_initial(request):
+    request.session['current_question_id'] = 136;
     if request.method == 'POST':
         # create user folder
         user_id = str(request.POST.get("user_id"))
