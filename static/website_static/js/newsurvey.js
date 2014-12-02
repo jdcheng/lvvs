@@ -15,7 +15,7 @@ $(document).ready(function(){
         $("#ballot-container *").css('fontWeight', sessionStorage.getItem('boldness'))
     }
 
-    $("#ballot-container *").css('line-height', "1.25em");
+    $("#ballot-container *").css('line-height', "2.0em");
     $("#ballot-container *").css('list-style', "none");
 
 });

@@ -24,7 +24,7 @@ $(document).ready(function() {
        $("input[name='choice']:radio").attr('disabled', true);
     }
 
-    $("#ballot-container *").css('line-height', "1.25em");
+    $("#ballot-container *").css('line-height', "2.0em");
 
     $("#vote").click(function(event) {
         event.preventDefault();
