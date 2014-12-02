@@ -54,7 +54,8 @@
         <div class="spaced-button">
           <form action="{% url 'polls:toballot' %}" method="post">
             {% csrf_token %}
-              <input type="submit" class="btn btn-large btn-success" id="ballot" value="Begin"/>
+            <input type="hidden" name="start_time" value="0"/>
+            <input type="submit" class="btn btn-large btn-success" id="ballot" value="Begin"/>
           </form>
           <!-- <form id="next" action="136" method="get">
             <input type="submit" class="btn btn-large btn-success" id="start_button" value="Next"/>

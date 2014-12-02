@@ -116,7 +116,16 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 def get_new_survey(request):
-    if request.method == 'POST':
+    # record time in time.txt file
+    if "end_time" in request.POST and os.path.exists(request.session['user_id']):
+        form = NewSurvey()
+
+        time_spent = time.time() - request.session['start_time']
+        with open(request.session['user_id'] + '/time.txt', 'w') as text_file:
+            text_file.write(str(time_spent))
+
+    elif request.method == 'POST':
+        # record survey results in survey.csv file
         form = NewSurvey(request.POST)
         filename = request.session['user_id'] + '/survey.csv'
         if form.is_valid():
@@ -128,8 +137,7 @@ def get_new_survey(request):
                     choice = form.cleaned_data[tag]
                     votewriter.writerow([label]+[choice])
             return render(request, 'polls/thanks.html')
-    else:
-        form = NewSurvey()
+
     return render(request, 'newsurvey.html', {'form': form})
 
 def survey(request):
@@ -198,6 +206,8 @@ def back(request, question_id):
 
 def toballot(request):
     #p = get_object_or_404(Question, pk=question_id)
+    if "start_time" in request.POST:
+        request.session['start_time'] = time.time()
     if request.session['current_question_id'] is not None:
         return HttpResponseRedirect(reverse('polls:detail', args=(request.session['current_question_id'],)))
     else:
