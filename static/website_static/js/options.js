@@ -46,17 +46,22 @@ $(document).ready(function() {
 
     $("#size").val(sizeValue);
 
-    $("#sizeSlider").slider({
-        min: 18,
-        max: 72,
-        value: sizeValue,
-        formatter: function(value) {
-            return 'Current value: ' + value;
+    $( "#sizeSlider" ).slider({
+        value:250,
+        min: 50,
+        max: 1000,
+        range: "min",
+        step: 50,
+        slide: function( event, ui ) {
+            $("#size").html( ui.value );
         }
     });
+
+/*
     $("#sizeSlider").on("slide", function(slideEvt) {
         $("#size").val(slideEvt.value);
     });
+*/
 
     $("#applySize").click(function(event) {
         event.preventDefault();
