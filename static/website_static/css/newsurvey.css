@@ -10,6 +10,11 @@ html *
     line-height: 0
 }
 
+#choices-container {
+  display: inline-block;
+  text-align: left;
+}
+
 #container {
     text-align: justify;
     -ms-text-justify: distribute-all-lines;
@@ -18,9 +23,9 @@ html *
 
 .spaced-button {
   vertical-align: top;
-    display: inline-block;
-    *display: inline;
-    margin: 5px;
+  display: inline-block;
+  *display: inline;
+  margin: 5px;
 }
 
 .container {
@@ -28,6 +33,7 @@ html *
   width: 80%;
 
   padding: 20px;
+  padding-top: 120px;
   text-align: center;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   background-color: white;

@@ -23,11 +23,13 @@
       </div>
     </div>
 
-    <div class="container">
+    <div id="ballot-container" class="container">
       <h1>Post-Voting Survey</h1>
-      <form action="{% url 'polls:survey' %}" method="post">
+      <div id="choices-container">
+        <form action="{% url 'polls:survey' %}" method="post">
           {% csrf_token %}
           {{ form.as_p }}
+      </div>
     </div> <!-- /container -->
     <div id="push"></div>
   </div>
