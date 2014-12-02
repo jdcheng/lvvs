@@ -41,7 +41,7 @@ $(document).ready(function() {
         $("txt[name=sample]").css("font-size", sessionStorage.getItem("size"));
         sizeValue = sessionStorage.getItem("size");
     } else {
-        sizeValue = "72";
+        sizeValue = "18";
     }
 
     $("#size").val(sizeValue);
