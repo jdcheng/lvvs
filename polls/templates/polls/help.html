@@ -52,9 +52,13 @@
           </form>
         </div>
         <div class="spaced-button">
-          <form id="next" action="136" method="get">
-            <input type="submit" class="btn btn-large btn-success" id="start_button" value="Next"/>
+          <form action="{% url 'polls:options' %}" method="post">
+            {% csrf_token %}
+              <input type="submit" class="btn btn-large" id="options" value="Next"/>
           </form>
+          <!-- <form id="next" action="136" method="get">
+            <input type="submit" class="btn btn-large btn-success" id="start_button" value="Next"/>
+          </form> -->
         </div>
         <span class="stretch"></span>
       </div>

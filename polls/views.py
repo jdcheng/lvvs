@@ -218,7 +218,7 @@ def options(request, question_id):
     return render(request, 'polls/options.html')
 
 def options_base(request):
-    return render(request, 'polls/options.html')
+    return render(request, 'polls/first_settings.html')
 
 def submit_options(request):
     return render(request, 'polls/thanks.html')
