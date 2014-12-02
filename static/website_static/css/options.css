@@ -16,6 +16,11 @@ html *
   text-justify: distribute-all-lines;
 }
 
+#choices-container {
+  display: inline-block;
+  text-align: left;
+}
+
 .spaced-button {
   vertical-align: top;
     display: inline-block;

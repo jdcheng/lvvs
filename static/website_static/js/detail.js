@@ -17,7 +17,7 @@ $(document).ready(function() {
     //alert("" + sessionStorage.getItem('boldness') + "")
 
     if (sessionStorage.getItem('boldness') != 'null') {
-        $("#ballot-container").css('fontWeight', sessionStorage.getItem('boldness'))
+        $("#ballot-container *").css('fontWeight', sessionStorage.getItem('boldness'))
     }
 
     //$("body").css('text-weight', sessionStorage.getItem('boldness')) 
