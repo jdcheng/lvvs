@@ -11,13 +11,13 @@ $(document).ready(function() {
     // alert("" + sessionStorage.getItem('size') + "")
 
     if (sessionStorage.getItem('size') != 'null') {
-        $(".container").css('fontSize', sessionStorage.getItem('size') + "px")
+        $("#ballot-container *").css('font-size', sessionStorage.getItem('size') + "px")
     }
 
     //alert("" + sessionStorage.getItem('boldness') + "")
 
     if (sessionStorage.getItem('boldness') != 'null') {
-        $(".container").css('fontWeight', sessionStorage.getItem('boldness'))
+        $("#ballot-container").css('fontWeight', sessionStorage.getItem('boldness'))
     }
 
     //$("body").css('text-weight', sessionStorage.getItem('boldness')) 

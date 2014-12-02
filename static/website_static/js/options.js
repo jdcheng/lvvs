@@ -39,27 +39,30 @@ $(document).ready(function() {
 
     if (sessionStorage.getItem("size") != null) {
         $("txt[name=sample]").css("font-size", sessionStorage.getItem("size"));
-        $sizeValue = sessionStorage.getItem("size");
+        sizeValue = sessionStorage.getItem("size");
     } else {
-        $sizeValue = "72";
+        sizeValue = "72";
     }
 
-    $("#size").val($sizeValue);
+    $("#size").val(sizeValue);
 
     $("#sizeSlider").slider({
-        min: 46,
-        max: 144,
-        value: $sizeValue,
-        slide: function(event, ui) {
-            getSize();
+        min: 18,
+        max: 72,
+        value: sizeValue,
+        formatter: function(value) {
+            return 'Current value: ' + value;
         }
+    });
+    $("#sizeSlider").on("slide", function(slideEvt) {
+        $("#size").val(slideEvt.value);
     });
 
     $("#applySize").click(function(event) {
         event.preventDefault();
-        sessionStorage.setItem('size', $size);
+        sessionStorage.setItem('size', $("#size").val());
         $("txt[name=sample]").animate({
-            "font-size": $size + "px"
+            "font-size": $("#size").val() + "px"
         });
     });
 
@@ -106,7 +109,7 @@ $(document).ready(function() {
 });
 
 function getSize() {
-    $size = $("#sizeSlider").slider("values", 0);
+    $size = $("#sizeSlider").slider('getValue');
     $("#size").val($size);
     //$("txt[name=sample]").animate({"font-size":$size + "px"});
     //sessionStorage.setItem('size', $size);
