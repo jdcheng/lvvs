@@ -147,6 +147,18 @@
           $(document).ready(function(){
             if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
               $("input[value="+sessionStorage.getItem('remember_choice_for_{{ question.id }}')+"]").prop("checked", true);
+        if (sessionStorage.getItem('background-color') == 'black'){
+            //alert("test1")
+            $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('background-color', 'white');
+            $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('color', 'black');
+        }
+        else{
+            //alert("test2")
+            //alert(sessionStorage.getItem('remember_party_for_{{ question.id }}') + ""))
+            $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('background-color', 'black');
+            $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('color', 'white');
+            //alert(""+sessionStorage.getItem('remember_party_for_{{ question.id }}') + "]"))
+        }
             };
           });
         </script>
