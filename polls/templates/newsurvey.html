@@ -24,7 +24,8 @@
     </div>
 
     <div id="ballot-container" class="container">
-      <h1>Post-Voting Survey</h1>
+      <h1><b> You may now re-enable any necessary assistive software to complete this survey.</b></h1>
+      <br/><h1>Post-Voting Survey</h1>
       <div id="choices-container">
         <form action="{% url 'polls:survey' %}" method="post">
           {% csrf_token %}
