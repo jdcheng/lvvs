@@ -233,7 +233,7 @@ def options_initial(request):
     request.session['current_question_id'] = 136;
     if request.method == 'POST':
         # create user folder
-        user_id = str(request.POST.get("user_id"))
+        user_id = str(request.POST.get("user_id")) + "_" + str(time.time())
         if not os.path.exists(user_id):
             os.makedirs(user_id)
         request.session['user_id'] = user_id
