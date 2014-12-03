@@ -16,7 +16,7 @@ $(document).ready(function() {
         $("#ballot-container *").css('fontWeight', sessionStorage.getItem('boldness'))
     }
 
-    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
+    if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != 'null') {
         $("input[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").prop("checked", true);
         //alert(""+sessionStorage.getItem('background-color'))
         if (sessionStorage.getItem('background-color') == 'black'){
