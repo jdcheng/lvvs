@@ -98,6 +98,13 @@ function validate_user_id() {
         document.getElementById("user_id").style.backgroundColor = "FF9494";
         return false;
     } else {
-        $("input[name=user_id]").val(x);
+        var regx = /^[A-Za-z0-9]+$/;
+        if (!regx.test(x)) {
+            alert("Please enter an alphanumeric user id");
+            document.getElementById("user_id").style.backgroundColor = "FF9494";
+            return false;
+        } else {
+            $("input[name=user_id]").val(x);
+        }
     }
 }
