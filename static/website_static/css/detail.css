@@ -21,6 +21,9 @@ html *
   text-align: left;
 }
 
+label { display: block; padding: 10px; border-bottom: 1px solid #aaa; }
+.highlight { background-color: yellow; }
+
 .spaced-button {
   vertical-align: top;
   display: inline-block;

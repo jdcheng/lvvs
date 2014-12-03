@@ -18,6 +18,20 @@ $(document).ready(function() {
 
     if (sessionStorage.getItem("remember_choice_for_{{ question.id }}") != null) {
         $("input[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").prop("checked", true);
+        //alert(""+sessionStorage.getItem('background-color'))
+        if (sessionStorage.getItem('background-color') == 'black'){
+            //alert("test1")
+            $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('background-color', 'white');
+            $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('color', 'black');
+        }
+        else{
+            //alert("test2")
+            //alert(sessionStorage.getItem('remember_party_for_{{ question.id }}') + ""))
+            $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('background-color', 'black');
+            $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('color', 'white');
+            //alert(""+sessionStorage.getItem('remember_party_for_{{ question.id }}') + "]"))
+        }
+        //alert("testagain")
     };
 
     if ($("input[name='choice']:checked").val()) {
@@ -45,6 +59,18 @@ $(document).ready(function() {
 
     $("#deselect2").click(function(event){
         $('input[type=radio]').prop("disabled", false);
+        if (sessionStorage.getItem('background-color') == 'black'){
+            //alert("test1")
+            $("label").css('background-color', 'black');
+            $("label").css('color', 'white');
+        }
+        else{
+            //alert("test2")
+            //alert(sessionStorage.getItem('remember_party_for_{{ question.id }}') + ""))
+            $("label").css('background-color', 'white');
+            $("label").css('color', 'black');
+            //alert(""+sessionStorage.getItem('remember_party_for_{{ question.id }}') + "]"))
+        }
         if ($("input[name='choice']:checked").val()) {
             $('input[type=radio]:checked').prop("checked", false);
             sessionStorage.setItem("remember_choice_for_{{ question.id }}", null);

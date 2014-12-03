@@ -106,9 +106,9 @@
             {% csrf_token %}
             {% for choice in question.choice_set.all %}
               {% if choice.party_description != ' ' %}
-                <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</i> 
+                <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}" value = "{{ choice.id }}">{{ choice.choice_text }} - <i>{{ choice.party_description }}</i> 
               {% else %}
-                <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}">{{ choice.choice_text }}</i>
+                <label class="radio" for="choice{{ forloop.counter }}" name = "{{ choice.choice_text }}" party = "{{ choice.party_description }}" value = "{{ choice.id }}">{{ choice.choice_text }}</i>
               {% endif %}
               <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
               </label></br></br>
@@ -125,6 +125,18 @@
                   //alert($party)
                   sessionStorage.setItem("remember_name_for_{{ question.id }}", $name);
                   sessionStorage.setItem("remember_party_for_{{ question.id }}", $party);
+                  if (sessionStorage.getItem('background-color') == 'black'){
+                      //alert("test1")
+                      $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('background-color', 'white');
+                      $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('color', 'black');
+                  }
+                  else{
+                      //alert("test2")
+                      //alert(sessionStorage.getItem('remember_party_for_{{ question.id }}') + ""))
+                      $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('background-color', 'black');
+                      $("label[value=" + sessionStorage.getItem('remember_choice_for_{{ question.id }}') + "]").css('color', 'white');
+                      //alert(""+sessionStorage.getItem('remember_party_for_{{ question.id }}') + "]"))
+                  }
                 }
               });
             </script>
