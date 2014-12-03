@@ -106,6 +106,7 @@ class NewSurvey(forms.Form):
     multiracial = forms.CharField(required=False, label='Multiracial (please specify)', max_length = 100)
     other_race = forms.CharField(required=False, label='Other', max_length = 100)
     income = forms.ChoiceField(required=False, label="26. Which of the following income ranges best describes your yearly wages?", choices=INCOME, widget=forms.RadioSelect())
+    retired = forms.ChoiceField(required=False, label="27. If you are retired, which of the following income ranges best describes your maximum yearly wages while you were working full-time?", choices=INCOME, widget=forms.RadioSelect())
     satisfied_system = forms.ChoiceField(required = False, label="28. On a scale of 1-10, with 1 being least satisfied and 10 being most satisfied, how satisfied are you with your experience using our voting system?", choices=[(x, x) for x in range(1, 11)])
     which_features_used = forms.CharField(required = False, label=mark_safe("29. Which accessibility features did you use?"), widget=forms.Textarea(attrs= {'style': 'width: 30em;'}))
     which_features_helpful = forms.CharField(required = False, label=mark_safe("30. Which accessibility features did you find most helpful?"), max_length = 1000, widget=forms.Textarea(attrs= {'style': 'width: 30em;'}))
