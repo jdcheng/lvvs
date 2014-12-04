@@ -73,7 +73,7 @@ class NewSurvey(forms.Form):
     hearing = forms.ChoiceField(required = False, label="5. Do you have a hearing impairment?", choices=YES, widget=forms.RadioSelect())
     english = forms.ChoiceField(required = False, label="6. Are you a native English speaker?", choices=YES, widget=forms.RadioSelect())
     language = forms.CharField(required=False, label='If no, what is your native language?', max_length = 100)
-    ipaduse = forms.ChoiceField(required = False, label="7. How many hours per week do you use an iPad?", choices=IPAD, widget=forms.RadioSelect())
+    ipadusefirst = forms.ChoiceField(required = False, label="7. How many hours per week do you use an iPad?", choices=IPAD, widget=forms.RadioSelect())
     ipadexpertise = forms.ChoiceField(required = False, label="8. Please rate your level of iPad expertise (1 = novice, 10 = expert)", choices=[(x, x) for x in range(1, 11)])
     political = forms.ChoiceField(required = False, label="9. What is your political affiliation", choices=POLITICAL, widget=forms.RadioSelect())
     political_other = forms.CharField(required = False, label = "Other Political Affiliation", max_length = 100)
